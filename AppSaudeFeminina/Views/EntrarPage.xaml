@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSaudeFeminina.EntrarPage"
+             BackgroundColor="White">
+
+    <VerticalStackLayout
+        Padding="20"
+        Spacing="25">
+
+        <Label
+            Text="Bem-vinda de volta"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            TextColor="#5D2E8E" />
+
+        <Label
+            Text="Acesse para continuar seu histórico."
+            FontSize="14"
+            HorizontalTextAlignment="Center"
+            TextColor="#9E9E9E" />
+
+        <Entry
+            Placeholder="E-mail"
+            Keyboard="Email"
+            BackgroundColor="#F5F5F5"
+            TextColor="Black"
+            HeightRequest="50"
+            Margin="0,10,0,0" />
+
+        <Entry
+            Placeholder="Senha"
+            IsPassword="True"
+            BackgroundColor="#F5F5F5"
+            TextColor="Black"
+            HeightRequest="50"
+            Margin="0,10,0,0" />
+
+        <Button
+            Text="ACESSAR APP"
+            BackgroundColor="#A259FF"
+            TextColor="White"
+            CornerRadius="25"
+            HeightRequest="50"
+            WidthRequest="200"
+            HorizontalOptions="Center"
+            Clicked="OnAcessarAppClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

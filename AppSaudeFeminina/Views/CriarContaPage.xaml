@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSaudeFeminina.CriarContaPage"
+             Title="Criar Conta">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="25">
+
+            <!-- Seção Sobre Você -->
+            <Label
+                Text="Sobre você"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#5D2E8E" />
+
+            <Entry Placeholder="Nome Completo" BackgroundColor="#F5F5F5" TextColor="Black" />
+            <Entry Placeholder="E-mail Principal" Keyboard="Email" BackgroundColor="#F5F5F5" TextColor="Black" />
+
+            <HorizontalStackLayout Spacing="10">
+                <DatePicker Format="dd/MM/yyyy" BackgroundColor="#F5F5F5" TextColor="#5D2E8E" />
+                <Entry Placeholder="Telefone" Keyboard="Telephone" BackgroundColor="#F5F5F5" TextColor="Black" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Entry Placeholder="Altura (cm)" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
+                <Entry Placeholder="Peso (kg)" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
+            </HorizontalStackLayout>
+
+            <!-- Seção Saúde Menstrual -->
+            <Label
+                Text="Saúde Menstrual"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#5D2E8E" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Entry Placeholder="Duração Ciclo" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
+                <Entry Placeholder="Duração Fluxo" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
+            </HorizontalStackLayout>
+
+            <DatePicker Format="dd/MM/yyyy" BackgroundColor="#F5F5F5" TextColor="#5D2E8E" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Sim" BackgroundColor="#A259FF" TextColor="White" CornerRadius="25" />
+                <Button Text="Irregular" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
+            </HorizontalStackLayout>
+
+            <!-- Seção Contracepção -->
+            <Label
+                Text="Contracepção"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#5D2E8E" />
+
+            <Label
+                Text="Usa anticoncepcional?"
+                FontSize="14"
+                TextColor="#9E9E9E" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Sim" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
+                <Button Text="Não" BackgroundColor="#A259FF" TextColor="White" CornerRadius="25" />
+            </HorizontalStackLayout>
+
+            <Label
+                Text="Deseja engravidar?"
+                FontSize="14"
+                TextColor="#9E9E9E" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Sim" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
+                <Button Text="Não" BackgroundColor="#FF5C8D" TextColor="White" CornerRadius="25" />
+                <Button Text="Talvez" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
+            </HorizontalStackLayout>
+
+            <Button
+                Text="Cadastrar"
+                BackgroundColor="#A259FF"
+                TextColor="White"
+                CornerRadius="25"
+                HeightRequest="50"
+                WidthRequest="200"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

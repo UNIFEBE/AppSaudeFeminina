@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSaudeFeminina.MainPage"
+             BackgroundColor="White">
+
+    <VerticalStackLayout
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Spacing="20">
+
+        <Image
+            Source="heart_icon.png"
+            HeightRequest="100"
+            WidthRequest="100"
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="Minha Saúde&#10;Feminina"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            TextColor="#5D2E8E" />
+
+        <Label
+            Text="Seu espaço inteligente de acompanhamento e saúde."
+            FontSize="14"
+            HorizontalTextAlignment="Center"
+            TextColor="#9E9E9E" />
+
+        <Button
+            Text="CRIAR CONTA"
+            BackgroundColor="#A259FF"
+            TextColor="White"
+            CornerRadius="25"
+            HeightRequest="50"
+            WidthRequest="350"
+            Clicked="OnCriarContaClicked" />
+
+        <Button
+            Text="ENTRAR"
+            BackgroundColor="White"
+            TextColor="#A259FF"
+            BorderColor="#A259FF"
+            BorderWidth="2"
+            CornerRadius="25"
+            HeightRequest="50"
+            WidthRequest="350"
+            Clicked="OnEntrarClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
