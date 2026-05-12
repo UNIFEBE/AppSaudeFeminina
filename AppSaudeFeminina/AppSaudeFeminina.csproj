@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
@@ -70,4 +70,25 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
 
-</Project>
+	<ItemGroup>
+	  <MauiXaml Update="CriarContaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  </ItemGroup>
+
+	  <ItemGroup>
+		<MauiXaml Update="MainPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="EntrarPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	  </ItemGroup>
+
+	  <ItemGroup>
+	    <Folder Include="Model\" />
+	    <Folder Include="Models\" />
+	    <Folder Include="ViewModels\" />
+	  </ItemGroup>
+
+	</Project>
