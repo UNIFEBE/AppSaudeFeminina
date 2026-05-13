@@ -9,6 +9,32 @@
             Padding="20"
             Spacing="25">
 
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                Text="NOME COMPLETO"
+                FontSize="10"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,0,0,0" />
+
+                            <Border
+                BackgroundColor="#F1F2F6"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 14">
+
+                                <Entry
+                    Placeholder=""
+                    BackgroundColor="Transparent"
+                    PlaceholderColor="#B0B0B0"
+                    TextColor="Black"
+                    Margin="15,0"
+                    HeightRequest="55" />
+
+                            </Border>
+
+            </VerticalStackLayout>
+
             <!-- Seção Sobre Você -->
             <Label
                 Text="Sobre você"
@@ -16,7 +42,7 @@
                 FontAttributes="Bold"
                 TextColor="#5D2E8E" />
 
-            <Entry Placeholder="Nome Completo" BackgroundColor="#F5F5F5" TextColor="Black" />
+            <Entry Placeholder="Nome Completo" BackgroundColor="#fff" TextColor="Black" />
             <Entry Placeholder="E-mail Principal" Keyboard="Email" BackgroundColor="#F5F5F5" TextColor="Black" />
 
             <HorizontalStackLayout Spacing="10">
