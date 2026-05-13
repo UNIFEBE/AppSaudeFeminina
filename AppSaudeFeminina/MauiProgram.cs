@@ -1,4 +1,31 @@
-﻿using Microsoft.Extensions.Logging;
+﻿//using Microsoft.Extensions.Logging;
+
+//namespace AppSaudeFeminina
+//{
+//    public static class MauiProgram
+//    {
+//        public static MauiApp CreateMauiApp()
+//        {
+//            var builder = MauiApp.CreateBuilder();
+//            builder
+//                .UseMauiApp<App>()
+//                .ConfigureFonts(fonts =>
+//                {
+//                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+//                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+//                });
+
+//#if DEBUG
+//    		builder.Logging.AddDebug();
+//#endif
+
+//            return builder.Build();
+//        }
+//    }
+//}
+
+using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Handlers;
 
 namespace AppSaudeFeminina
 {
@@ -7,6 +34,7 @@ namespace AppSaudeFeminina
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -15,8 +43,17 @@ namespace AppSaudeFeminina
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+#if ANDROID
+            EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+            {
+                handler.PlatformView.BackgroundTintList =
+                    Android.Content.Res.ColorStateList.ValueOf(
+                        Android.Graphics.Color.Transparent);
+            });
+#endif
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
