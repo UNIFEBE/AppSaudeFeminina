@@ -9,11 +9,28 @@
         HorizontalOptions="Center"
         Spacing="20">
 
-        <Image
-            Source="heart_icon.png"
-            HeightRequest="100"
-            WidthRequest="100"
-            HorizontalOptions="Center" />
+        <!-- Ícone estilizado -->
+        <Border
+            WidthRequest="96"
+            HeightRequest="96"
+            BackgroundColor="#FCE7F3"
+            StrokeThickness="0"
+            Rotation="12"
+            StrokeShape="RoundRectangle 32"
+            Shadow="{Shadow Brush=#F9A8D4, Opacity=0.4, Radius=20, Offset='0,8'}">
+
+            <Grid>
+
+                <Image
+                    Source="coracao_startup.png"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+        </Border>
 
         <Label
             Text="Minha Saúde&#10;Feminina"

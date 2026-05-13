@@ -66,6 +66,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Model\**" />
+	  <Compile Remove="Model\**" />
+	  <EmbeddedResource Remove="Model\**" />
+	  <MauiCss Remove="Model\**" />
+	  <MauiXaml Remove="Model\**" />
+	  <None Remove="Model\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
@@ -83,12 +92,20 @@
 		<MauiXaml Update="EntrarPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\HomePage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	  </ItemGroup>
 
 	  <ItemGroup>
-	    <Folder Include="Model\" />
 	    <Folder Include="Models\" />
 	    <Folder Include="ViewModels\" />
+	  </ItemGroup>
+
+	  <ItemGroup>
+	    <Compile Update="Views\HomePage.xaml.cs">
+	      <DependentUpon>HomePage.xaml</DependentUpon>
+	    </Compile>
 	  </ItemGroup>
 
 	</Project>
