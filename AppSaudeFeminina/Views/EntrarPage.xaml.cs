@@ -15,6 +15,7 @@ public partial class EntrarPage : ContentPage
     private async void OnAcessarAppClicked(object sender, EventArgs e)
     {
         // Lógica para acessar o app
-        await DisplayAlert("Login", "Bem-vinda de volta!", "OK");
+        await Navigation.PushAsync(new HomePage());
+        //await DisplayAlert("Login", "Bem-vinda de volta!", "OK");
     }
 }
