@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSaudeFeminina.Views.Perfil"
+             Title="Perfil"
+             BackgroundColor="#F8F9FA">
+
+    <Grid>
+
+        <ScrollView>
+            <VerticalStackLayout VerticalOptions="Start">
+
+                <Grid ColumnDefinitions="*, Auto" Padding="20">
+                    <Label Grid.Column="0" 
+                           Text="Meu Perfil" 
+                           FontSize="28" 
+                           FontAttributes="Bold" 
+                           TextColor="#4D1979" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Start" />
+
+                    <ImageButton Grid.Column="1" 
+                                 Source="engrenagem.svg"
+                                 BackgroundColor="#F2E8FF" 
+                                 CornerRadius="16" 
+                                 HeightRequest="48" 
+                                 WidthRequest="48" 
+                                 Padding="12"
+                                 VerticalOptions="Center"
+                                 Clicked="OnSettingsClicked" />
+                </Grid>
+
+                <Border Margin="20,10,20,20"
+                        Padding="0,40,0,40"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 32"
+                        StrokeThickness="0">
+                    <Border.Shadow>
+                        <Shadow Brush="#D9D9D9" Offset="0,4" Radius="15" Opacity="0.4" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Border HeightRequest="100" 
+                                WidthRequest="100" 
+                                StrokeShape="RoundRectangle 50" 
+                                StrokeThickness="0" 
+                                BackgroundColor="#F2E8FF"
+                                HorizontalOptions="Center"
+                                Margin="0,0,0,15">
+                            <Image Source="avatar.svg" 
+                                   HeightRequest="50" 
+                                   WidthRequest="50" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center" />
+                        </Border>
+                        <Label Text="Usuária" FontSize="24" FontAttributes="Bold" TextColor="#4D1979" HorizontalOptions="Center" />
+                        <Label Text="perfil@email.com" FontSize="16" TextColor="#8A95A5" FontAttributes="Bold" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="15" Margin="20,0,20,20">
+                    <Border Grid.Column="0" BackgroundColor="White" StrokeShape="RoundRectangle 24" StrokeThickness="0" Padding="10,25,10,25">
+                        <Border.Shadow>
+                            <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
+                        </Border.Shadow>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                            <Image Source="batimento.svg" HeightRequest="32" WidthRequest="32" HorizontalOptions="Center" />
+                            <Label Text="PESO ATUAL" FontSize="12" FontAttributes="Bold" TextColor="#8A95A5" HorizontalOptions="Center" />
+                            <Label Text="0kg" FontSize="22" FontAttributes="Bold" TextColor="#4D1979" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1" BackgroundColor="White" StrokeShape="RoundRectangle 24" StrokeThickness="0" Padding="10,25,10,25">
+                        <Border.Shadow>
+                            <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
+                        </Border.Shadow>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                            <Image Source="raio.svg" HeightRequest="32" WidthRequest="32" HorizontalOptions="Center" />
+                            <Label Text="CICLO MÉDIO" FontSize="12" FontAttributes="Bold" TextColor="#8A95A5" HorizontalOptions="Center" />
+                            <Label Text="28d" FontSize="22" FontAttributes="Bold" TextColor="#4D1979" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <BoxView x:Name="OverlayEscuro" 
+                 BackgroundColor="#201A25" 
+                 Opacity="0" 
+                 IsVisible="False"
+                 InputTransparent="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="FecharModal_Clicked" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <Border x:Name="ModalOpcoes" 
+                BackgroundColor="White" 
+                VerticalOptions="End" 
+                IsVisible="False"
+                Padding="25,15,25,35"
+                StrokeThickness="0"
+                TranslationY="400">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="32,32,0,0" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="15">
+
+                <BoxView HeightRequest="4" 
+                         WidthRequest="40" 
+                         CornerRadius="2" 
+                         BackgroundColor="#E0E0E0" 
+                         HorizontalOptions="Center" 
+                         Margin="0,0,0,10"/>
+
+                <Label Text="Opções do Perfil" 
+                       FontSize="18" 
+                       FontAttributes="Bold" 
+                       TextColor="#4D1979" 
+                       Margin="0,0,0,10"/>
+
+                <Button Text="EDITAR PERFIL" 
+                        Clicked="CriarConta_Clicked"
+                        FontAttributes="Bold"
+                        BackgroundColor="#9D38FF" 
+                        TextColor="White" 
+                        CornerRadius="16" 
+                        HeightRequest="56"/>
+
+                <Button Text="SAIR DA CONTA" 
+                        Clicked="SairDaConta_Clicked"
+                        FontAttributes="Bold"
+                        BackgroundColor="#FFF0F5" 
+                        TextColor="#D81B60" 
+                        CornerRadius="16" 
+                        HeightRequest="56"/>
+
+                <Button Text="FECHAR" 
+                        FontAttributes="Bold"
+                        BackgroundColor="#F5F6F8" 
+                        TextColor="#4A4A4A" 
+                        CornerRadius="16" 
+                        HeightRequest="56"
+                        Clicked="FecharModal_Clicked"/>
+
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

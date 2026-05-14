@@ -44,7 +44,16 @@ namespace AppSaudeFeminina
                 });
 
 #if ANDROID
+            // Remove a linha do Entry
             EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+            {
+                handler.PlatformView.BackgroundTintList =
+                    Android.Content.Res.ColorStateList.ValueOf(
+                        Android.Graphics.Color.Transparent);
+            });
+
+            // Remove a linha do DatePicker
+            DatePickerHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
             {
                 handler.PlatformView.BackgroundTintList =
                     Android.Content.Res.ColorStateList.ValueOf(
