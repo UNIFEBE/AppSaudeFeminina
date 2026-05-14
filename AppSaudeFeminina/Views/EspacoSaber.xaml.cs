@@ -97,4 +97,15 @@ public partial class EspacoSaber : ContentPage
         }
     }
 
+    // ── Navbar ────────────────────────────────────────────────────
+
+    private async void OnHojeTapped(object sender, TappedEventArgs e)
+        => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+
+    private async void OnCicloTapped(object sender, TappedEventArgs e)
+        => await Shell.Current.GoToAsync(nameof(CicloPage));
+
+    private async void OnPerfilTapped(object sender, TappedEventArgs e)
+        => await Shell.Current.GoToAsync(nameof(Perfil));
+
 }

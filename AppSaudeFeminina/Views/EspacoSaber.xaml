@@ -46,7 +46,9 @@
             <Setter Property="TextColor" Value="White" />
         </Style>
     </ContentPage.Resources>
-    <ScrollView>
+    <Grid RowDefinitions="*, Auto">
+
+    <ScrollView Grid.Row="0">
     <VerticalStackLayout>
 
         <Border BackgroundColor="#8A2BE2" 
@@ -332,4 +334,50 @@
 
     </VerticalStackLayout>
     </ScrollView>
+
+        <!-- NavBar -->
+        <Border Grid.Row="1" BackgroundColor="White" Padding="15,10,15,20"
+                StrokeThickness="1" Stroke="#F1F5F9">
+            <Border.Shadow>
+                <Shadow Brush="#94A3B8" Offset="0,-4" Radius="10" Opacity="0.1" />
+            </Border.Shadow>
+            <Grid ColumnDefinitions="*, *, *, *">
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHojeTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                        <Label Text="❤️" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Hoje" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCicloTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                        <Label Text="📅" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Ciclo" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4">
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FDF2F8" Padding="8" StrokeThickness="0">
+                        <Label Text="📖" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Conteúdos" FontSize="10" TextColor="#EC4899" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPerfilTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                        <Label Text="👤" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Perfil" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+    </Grid>
+
 </ContentPage>

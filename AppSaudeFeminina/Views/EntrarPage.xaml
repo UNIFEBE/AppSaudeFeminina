@@ -37,6 +37,7 @@
                 StrokeShape="RoundRectangle 14">
 
                 <Entry
+                    x:Name="EmailEntry"
                     Placeholder="Digite seu e-mail"
                     Keyboard="Email"
                     BackgroundColor="Transparent"
@@ -65,6 +66,7 @@
                 StrokeShape="RoundRectangle 14">
 
                 <Entry
+                    x:Name="SenhaEntry"
                     Placeholder="Digite sua senha"
                     IsPassword="True"
                     BackgroundColor="Transparent"
