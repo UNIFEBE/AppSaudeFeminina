@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSaudeFeminina.EntrarPage"
-             BackgroundColor="White">
+             BackgroundColor="#FBF4EB">
 
     <VerticalStackLayout
         Padding="20"
@@ -13,7 +13,7 @@
             FontSize="24"
             FontAttributes="Bold"
             HorizontalTextAlignment="Center"
-            TextColor="#5D2E8E" />
+            TextColor="#C43A4A" />
 
         <Label
             Text="Acesse para continuar seu histórico."
@@ -28,12 +28,13 @@
                 Text="E-MAIL"
                 FontSize="10"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,0,0,0" />
 
             <Border
-                BackgroundColor="#F1F2F6"
-                StrokeThickness="0"
+                BackgroundColor="White"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
                 StrokeShape="RoundRectangle 14">
 
                 <Entry
@@ -41,8 +42,8 @@
                     Placeholder="Digite seu e-mail"
                     Keyboard="Email"
                     BackgroundColor="Transparent"
-                    PlaceholderColor="#B0B0B0"
-                    TextColor="Black"
+                    PlaceholderColor="#C8C8C8"
+                    TextColor="#3A1A1A"
                     Margin="15,0"
                     HeightRequest="55" />
 
@@ -57,12 +58,13 @@
                 Text="SENHA"
                 FontSize="10"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,0,0,0" />
 
             <Border
-                BackgroundColor="#F1F2F6"
-                StrokeThickness="0"
+                BackgroundColor="White"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
                 StrokeShape="RoundRectangle 14">
 
                 <Entry
@@ -70,8 +72,8 @@
                     Placeholder="Digite sua senha"
                     IsPassword="True"
                     BackgroundColor="Transparent"
-                    PlaceholderColor="#B0B0B0"
-                    TextColor="Black"
+                    PlaceholderColor="#C8C8C8"
+                    TextColor="#3A1A1A"
                     Margin="15,0"
                     HeightRequest="55" />
 
@@ -81,7 +83,7 @@
 
         <Button
             Text="ENTRAR"
-            BackgroundColor="#A259FF"
+            BackgroundColor="#C43A4A"
             TextColor="White"
             CornerRadius="25"
             HeightRequest="50"

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSaudeFeminina.Views.EspacoSaber"
              Title="EspacoSaber"
-             BackgroundColor="#F8F9FA">
+             BackgroundColor="#FBF4EB">
 
     <ContentPage.Resources>
         <Style x:Key="TagNormalStyle" TargetType="Border">
@@ -13,14 +13,14 @@
             <Setter Property="Padding" Value="15,20" />
             <Setter Property="Shadow">
                 <Setter.Value>
-                    <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
+                    <Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.25" />
                 </Setter.Value>
             </Setter>
         </Style>
 
         <Style x:Key="TagSelecionadaStyle" TargetType="Border">
-            <Setter Property="BackgroundColor" Value="#E91E63" />
-            <Setter Property="StrokeThickness" Value="1.5" />
+            <Setter Property="BackgroundColor" Value="#C43A4A" />
+            <Setter Property="StrokeThickness" Value="0" />
             <Setter Property="StrokeShape" Value="RoundRectangle 25" />
             <Setter Property="Padding" Value="15,0" />
         </Style>
@@ -33,12 +33,12 @@
         <Style x:Key="TagTextBotNormal" TargetType="Label">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="TextColor" Value="#4D1979" />
+            <Setter Property="TextColor" Value="#C43A4A" />
         </Style>
         <Style x:Key="TagTextTopSelecionada" TargetType="Label">
             <Setter Property="FontSize" Value="11" />
             <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="TextColor" Value="#FFD9E2" />
+            <Setter Property="TextColor" Value="#FBD9E5" />
         </Style>
         <Style x:Key="TagTextBotSelecionada" TargetType="Label">
             <Setter Property="FontSize" Value="14" />
@@ -46,12 +46,13 @@
             <Setter Property="TextColor" Value="White" />
         </Style>
     </ContentPage.Resources>
+
     <Grid RowDefinitions="*, Auto">
 
     <ScrollView Grid.Row="0">
     <VerticalStackLayout>
 
-        <Border BackgroundColor="#8A2BE2" 
+        <Border BackgroundColor="#C43A4A" 
                 StrokeThickness="0" 
                 Padding="20,40,20,70" 
                 Margin="0">
@@ -59,8 +60,8 @@
                 <RoundRectangle CornerRadius="0,0,40,40" />
             </Border.StrokeShape>
             <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
-                <Label Text="Espaço Saber" FontSize="32" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
-                <Label Text="Aprenda e cuide-se todos os dias." FontSize="16" TextColor="#E2D1F9" HorizontalOptions="Center" />
+                <Label Text="Espaço Saber" FontSize="32" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" FontFamily="LeckerliOne" />
+                <Label Text="Aprenda e cuide-se todos os dias." FontSize="16" TextColor="#FBD9E5" HorizontalOptions="Center" />
             </VerticalStackLayout>
         </Border>
 
@@ -120,226 +121,101 @@
 
         </Grid>
 
-            <VerticalStackLayout Margin="20,10,20,20">
+        <VerticalStackLayout Margin="20,10,20,20">
 
-                <VerticalStackLayout x:Name="SecaoCiclo" IsVisible="True">
-                <Label Text="Tópicos em Menstruação" FontSize="18" FontAttributes="Bold" TextColor="#4D1979" Margin="0, 20"/>
-                    <Border BackgroundColor="White"
-                        StrokeThickness="0"
-                        Padding="20"
-                        Margin="0,5,0,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="25" />
-                        </Border.StrokeShape>
-                        <Border.Shadow>
-                            <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
-                        </Border.Shadow>
+            <VerticalStackLayout x:Name="SecaoCiclo" IsVisible="True">
+                <Label Text="Tópicos em Menstruação" FontSize="18" FontAttributes="Bold" TextColor="#C43A4A" Margin="0,20"/>
 
-                        <VerticalStackLayout Spacing="12">
-
-                            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                <Ellipse Fill="#E91E63" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
-                                <Label Text="MENSTRUAÇÃO" TextColor="#E91E63" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
-                            </HorizontalStackLayout>
-
-                            <Label Text="Ciclo Menstrual: Entenda as Fases" 
-                               TextColor="#4D1979" 
-                               FontSize="18" 
-                               FontAttributes="Bold" />
-
-                            <Label Text="O ciclo menstrual é dividido em quatro fases: menstrual, folicular, ovulatória e lútea." 
-                               TextColor="#8A95A5" 
-                               FontSize="14" 
-                               LineHeight="1.4" />
-
-                            <Label Text="LER CONTEÚDO  &gt;" 
-                               TextColor="#E91E63" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               Margin="0,10,0,0"
-                               CharacterSpacing="1">
-                            </Label>
-
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border BackgroundColor="White"
-                        StrokeThickness="0"
-                        Padding="20"
-                        Margin="0,20,0,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="25" />
-                        </Border.StrokeShape>
-                        <Border.Shadow>
-                            <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
-                        </Border.Shadow>
-
-                        <VerticalStackLayout Spacing="12">
-
-                            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                <Ellipse Fill="#E91E63" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
-                                <Label Text="MENSTRUAÇÃO" TextColor="#E91E63" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
-                            </HorizontalStackLayout>
-
-                            <Label Text="Sintonas Comuns e Alívio" 
-                               TextColor="#4D1979" 
-                               FontSize="18" 
-                               FontAttributes="Bold" />
-
-                        <Label Text="Cólicas, alterações de humor e inchaço são sintomas comuns." 
-                               TextColor="#8A95A5" 
-                               FontSize="14" 
-                               LineHeight="1.4" />
-
-                            <Label Text="LER CONTEÚDO  &gt;" 
-                               TextColor="#E91E63" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               Margin="0,10,0,0"
-                               CharacterSpacing="1">
-                            </Label>
-
-                        </VerticalStackLayout>
-                    </Border>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout x:Name="SecaoPrevencao" IsVisible="False">
-                <Label Text="Tópicos em Contracepção" FontSize="18" FontAttributes="Bold" TextColor="#4D1979" Margin="0, 20"/>
-                <Border BackgroundColor="White"
-                        StrokeThickness="0"
-                        Padding="20"
-                        Margin="0,5,0,0">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="25" />
-                    </Border.StrokeShape>
-                    <Border.Shadow>
-                        <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
-                    </Border.Shadow>
-
+                <Border BackgroundColor="White" StrokeThickness="0" Padding="20" Margin="0,5,0,0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="25" /></Border.StrokeShape>
+                    <Border.Shadow><Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.25" /></Border.Shadow>
                     <VerticalStackLayout Spacing="12">
-
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                            <Ellipse Fill="#E91E63" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
-                            <Label Text="CONTRACEPÇÃO" TextColor="#E91E63" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
+                            <Ellipse Fill="#C43A4A" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
+                            <Label Text="MENSTRUAÇÃO" TextColor="#C43A4A" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
                         </HorizontalStackLayout>
+                        <Label Text="Ciclo Menstrual: Entenda as Fases" TextColor="#C43A4A" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="O ciclo menstrual é dividido em quatro fases: menstrual, folicular, ovulatória e lútea." TextColor="#8A95A5" FontSize="14" LineHeight="1.4" />
+                        <Label Text="LER CONTEÚDO  >" TextColor="#C43A4A" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0" CharacterSpacing="1" />
+                    </VerticalStackLayout>
+                </Border>
 
-                        <Label Text="Métodos Contraceptivos" 
-                               TextColor="#4D1979" 
-                               FontSize="18" 
-                               FontAttributes="Bold" />
-
-                        <Label Text="Conheça as opções hormonais e não hormonais para planejar sua saúde." 
-                               TextColor="#8A95A5" 
-                               FontSize="14" 
-                               LineHeight="1.4" />
-
-                        <Label Text="LER CONTEÚDO  &gt;" 
-                               TextColor="#E91E63" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               Margin="0,10,0,0"
-                               CharacterSpacing="1">
-                        </Label>
-
+                <Border BackgroundColor="White" StrokeThickness="0" Padding="20" Margin="0,20,0,0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="25" /></Border.StrokeShape>
+                    <Border.Shadow><Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.25" /></Border.Shadow>
+                    <VerticalStackLayout Spacing="12">
+                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                            <Ellipse Fill="#C43A4A" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
+                            <Label Text="MENSTRUAÇÃO" TextColor="#C43A4A" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
+                        </HorizontalStackLayout>
+                        <Label Text="Sintomas Comuns e Alívio" TextColor="#C43A4A" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="Cólicas, alterações de humor e inchaço são sintomas comuns." TextColor="#8A95A5" FontSize="14" LineHeight="1.4" />
+                        <Label Text="LER CONTEÚDO  >" TextColor="#C43A4A" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0" CharacterSpacing="1" />
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>
 
-                <VerticalStackLayout x:Name="SecaoBemEstar" IsVisible="False">
-           
-                <Label Text="Tópicos em Saúde Íntima" FontSize="18" FontAttributes="Bold" TextColor="#4D1979" Margin="0, 20"/>
-                <Border BackgroundColor="White"
-                        StrokeThickness="0"
-                        Padding="20"
-                        Margin="0,5,0,0">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="25" />
-                    </Border.StrokeShape>
-                    <Border.Shadow>
-                        <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
-                    </Border.Shadow>
-
+            <VerticalStackLayout x:Name="SecaoPrevencao" IsVisible="False">
+                <Label Text="Tópicos em Contracepção" FontSize="18" FontAttributes="Bold" TextColor="#C43A4A" Margin="0,20"/>
+                <Border BackgroundColor="White" StrokeThickness="0" Padding="20" Margin="0,5,0,0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="25" /></Border.StrokeShape>
+                    <Border.Shadow><Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.25" /></Border.Shadow>
                     <VerticalStackLayout Spacing="12">
-
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                            <Ellipse Fill="#E91E63" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
-                            <Label Text="SAÚDE ÍNTIMA" TextColor="#E91E63" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
+                            <Ellipse Fill="#C43A4A" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
+                            <Label Text="CONTRACEPÇÃO" TextColor="#C43A4A" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
                         </HorizontalStackLayout>
-
-                        <Label Text="PH Vaginal e Higiene" 
-                               TextColor="#4D1979" 
-                               FontSize="18" 
-                               FontAttributes="Bold" />
-
-                        <Label Text="Saiba como manter o equilíbrio da flora vaginal diariamente." 
-                               TextColor="#8A95A5" 
-                               FontSize="14" 
-                               LineHeight="1.4" />
-
-                        <Label Text="LER CONTEÚDO  &gt;" 
-                               TextColor="#E91E63" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               Margin="0,10,0,0"
-                               CharacterSpacing="1">
-                        </Label>
-
+                        <Label Text="Métodos Contraceptivos" TextColor="#C43A4A" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="Conheça as opções hormonais e não hormonais para planejar sua saúde." TextColor="#8A95A5" FontSize="14" LineHeight="1.4" />
+                        <Label Text="LER CONTEÚDO  >" TextColor="#C43A4A" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0" CharacterSpacing="1" />
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>
 
-                <VerticalStackLayout x:Name="SecaoGestacao" IsVisible="False">
-                <Label Text="Tópicos em Gravidez" FontSize="18" FontAttributes="Bold" TextColor="#4D1979" Margin="0, 20"/>
-                <Border BackgroundColor="White"
-                        StrokeThickness="0"
-                        Padding="20"
-                        Margin="0,5,0,0">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="25" />
-                    </Border.StrokeShape>
-                    <Border.Shadow>
-                        <Shadow Brush="#D9D9D9" Offset="0,4" Radius="10" Opacity="0.3" />
-                    </Border.Shadow>
-
+            <VerticalStackLayout x:Name="SecaoBemEstar" IsVisible="False">
+                <Label Text="Tópicos em Saúde Íntima" FontSize="18" FontAttributes="Bold" TextColor="#C43A4A" Margin="0,20"/>
+                <Border BackgroundColor="White" StrokeThickness="0" Padding="20" Margin="0,5,0,0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="25" /></Border.StrokeShape>
+                    <Border.Shadow><Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.25" /></Border.Shadow>
                     <VerticalStackLayout Spacing="12">
-
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                            <Ellipse Fill="#E91E63" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
-                            <Label Text="GRAVIDEZ" TextColor="#E91E63" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
+                            <Ellipse Fill="#C43A4A" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
+                            <Label Text="SAÚDE ÍNTIMA" TextColor="#C43A4A" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
                         </HorizontalStackLayout>
-
-                        <Label Text="Primeiros Sinais" 
-                               TextColor="#4D1979" 
-                               FontSize="18" 
-                               FontAttributes="Bold" />
-
-                        <Label Text="Descubra quais são os sintomas iniciais mais comuns." 
-                               TextColor="#8A95A5" 
-                               FontSize="14" 
-                               LineHeight="1.4" />
-
-                        <Label Text="LER CONTEÚDO  &gt;" 
-                               TextColor="#E91E63" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               Margin="0,10,0,0"
-                               CharacterSpacing="1">
-                        </Label>
-
+                        <Label Text="PH Vaginal e Higiene" TextColor="#C43A4A" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="Saiba como manter o equilíbrio da flora vaginal diariamente." TextColor="#8A95A5" FontSize="14" LineHeight="1.4" />
+                        <Label Text="LER CONTEÚDO  >" TextColor="#C43A4A" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0" CharacterSpacing="1" />
                     </VerticalStackLayout>
                 </Border>
-                </VerticalStackLayout>
-
             </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="SecaoGestacao" IsVisible="False">
+                <Label Text="Tópicos em Gravidez" FontSize="18" FontAttributes="Bold" TextColor="#C43A4A" Margin="0,20"/>
+                <Border BackgroundColor="White" StrokeThickness="0" Padding="20" Margin="0,5,0,0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="25" /></Border.StrokeShape>
+                    <Border.Shadow><Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.25" /></Border.Shadow>
+                    <VerticalStackLayout Spacing="12">
+                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                            <Ellipse Fill="#C43A4A" WidthRequest="8" HeightRequest="8" VerticalOptions="Center" />
+                            <Label Text="GRAVIDEZ" TextColor="#C43A4A" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
+                        </HorizontalStackLayout>
+                        <Label Text="Primeiros Sinais" TextColor="#C43A4A" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="Descubra quais são os sintomas iniciais mais comuns." TextColor="#8A95A5" FontSize="14" LineHeight="1.4" />
+                        <Label Text="LER CONTEÚDO  >" TextColor="#C43A4A" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0" CharacterSpacing="1" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
 
     </VerticalStackLayout>
     </ScrollView>
 
         <!-- NavBar -->
         <Border Grid.Row="1" BackgroundColor="White" Padding="15,10,15,20"
-                StrokeThickness="1" Stroke="#F1F5F9">
+                StrokeThickness="1" Stroke="#FBD9E5">
             <Border.Shadow>
-                <Shadow Brush="#94A3B8" Offset="0,-4" Radius="10" Opacity="0.1" />
+                <Shadow Brush="#C56682" Offset="0,-4" Radius="10" Opacity="0.1" />
             </Border.Shadow>
             <Grid ColumnDefinitions="*, *, *, *">
                 <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
@@ -361,10 +237,10 @@
                     <Label Text="Ciclo" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4">
-                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FDF2F8" Padding="8" StrokeThickness="0">
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FBD9E5" Padding="8" StrokeThickness="0">
                         <Label Text="📖" FontSize="20" HorizontalOptions="Center" />
                     </Border>
-                    <Label Text="Conteúdos" FontSize="10" TextColor="#EC4899" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="Conteúdos" FontSize="10" TextColor="#C43A4A" FontAttributes="Bold" HorizontalOptions="Center" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
                     <VerticalStackLayout.GestureRecognizers>
