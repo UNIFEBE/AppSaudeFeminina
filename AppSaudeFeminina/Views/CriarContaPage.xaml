@@ -109,7 +109,8 @@
                 CornerRadius="25"
                 HeightRequest="50"
                 WidthRequest="200"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                Clicked="OnCadastrarClicked" />
 
         </VerticalStackLayout>
     </ScrollView>

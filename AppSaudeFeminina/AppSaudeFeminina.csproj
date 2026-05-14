@@ -25,7 +25,8 @@
 		     For individual files, you can override by setting Inflator metadata:
 		       <MauiXaml Update="MyPage.xaml" Inflator="Default" /> (reverts to defaults: Runtime for Debug, XamlC for Release)
 		       <MauiXaml Update="MyPage.xaml" Inflator="Runtime" /> (force runtime inflation) -->
-		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+		<!-- MauiXamlInflator desativado: usa runtime inflation (padrão estável) -->
+		<!-- <MauiXamlInflator>SourceGen</MauiXamlInflator> -->
 
 		<!-- Display name -->
 		<ApplicationTitle>AppSaudeFeminina</ApplicationTitle>
@@ -80,21 +81,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="CriarContaPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  </ItemGroup>
+	  <MauiXaml Update="CriarContaPage.xaml" />
+	</ItemGroup>
 
 	  <ItemGroup>
-		<MauiXaml Update="MainPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="EntrarPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Views\HomePage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
+		<MauiXaml Update="MainPage.xaml" />
+		<MauiXaml Update="EntrarPage.xaml" />
+		<MauiXaml Update="Views\HomePage.xaml" />
+		<MauiXaml Update="Views\CicloPage.xaml" />
+		<MauiXaml Update="Views\ConteudosPage.xaml" />
+		<MauiXaml Update="Views\PerfilPage.xaml" />
 	  </ItemGroup>
 
 	  <ItemGroup>
@@ -105,6 +101,15 @@
 	  <ItemGroup>
 	    <Compile Update="Views\HomePage.xaml.cs">
 	      <DependentUpon>HomePage.xaml</DependentUpon>
+	    </Compile>
+	    <Compile Update="Views\CicloPage.xaml.cs">
+	      <DependentUpon>CicloPage.xaml</DependentUpon>
+	    </Compile>
+	    <Compile Update="Views\ConteudosPage.xaml.cs">
+	      <DependentUpon>ConteudosPage.xaml</DependentUpon>
+	    </Compile>
+	    <Compile Update="Views\PerfilPage.xaml.cs">
+	      <DependentUpon>PerfilPage.xaml</DependentUpon>
 	    </Compile>
 	  </ItemGroup>
 
