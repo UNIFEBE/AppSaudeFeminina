@@ -19,6 +19,6 @@ public partial class PerfilPage : ContentPage
 
     private async void OnConteudosTapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(ConteudosPage));
+        await Shell.Current.GoToAsync(nameof(EspacoSaber));
     }
 }

@@ -78,8 +78,8 @@ public partial class HomePage : ContentPage
         => await Shell.Current.GoToAsync(nameof(CicloPage));
 
     private async void OnConteudosTapped(object sender, EventArgs e)
-        => await Shell.Current.GoToAsync(nameof(ConteudosPage));
+        => await Shell.Current.GoToAsync(nameof(EspacoSaber));
 
     private async void OnPerfilTapped(object sender, EventArgs e)
-        => await Shell.Current.GoToAsync(nameof(PerfilPage));
+        => await Shell.Current.GoToAsync(nameof(Perfil));
 }

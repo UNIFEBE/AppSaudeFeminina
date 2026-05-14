@@ -12,8 +12,8 @@ namespace AppSaudeFeminina
             Routing.RegisterRoute(nameof(CriarContaPage), typeof(CriarContaPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(CicloPage), typeof(CicloPage));
-            Routing.RegisterRoute(nameof(ConteudosPage), typeof(ConteudosPage));
-            Routing.RegisterRoute(nameof(PerfilPage), typeof(PerfilPage));
+            Routing.RegisterRoute(nameof(EspacoSaber), typeof(EspacoSaber));
+            Routing.RegisterRoute(nameof(Perfil), typeof(Perfil));
         }
     }
 }

@@ -5,55 +5,212 @@
              Title="Criar Conta">
 
     <ScrollView>
+
         <VerticalStackLayout
             Padding="20"
             Spacing="25">
+            
+            
+            <VerticalStackLayout Spacing="6">
 
-                    <VerticalStackLayout Spacing="6">
+                <!-- Seção Sobre Você -->
+                <Label
+                Text="Sobre você"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#5D2E8E" 
+                Margin="0,0,0,20"/>
 
-                        <Label
+                <!--Input-->
+                <Label
                 Text="NOME COMPLETO"
-                FontSize="10"
+                FontSize="12"
                 FontAttributes="Bold"
                 TextColor="#8A97B5"
                 Margin="4,0,0,0" />
 
-                            <Border
-                BackgroundColor="#F1F2F6"
+                <Border
                 StrokeThickness="0"
+                BackgroundColor="#F1F2F6"
                 StrokeShape="RoundRectangle 14">
 
-                                <Entry
+                    <Entry
                     Placeholder=""
-                    BackgroundColor="Transparent"
                     PlaceholderColor="#B0B0B0"
                     TextColor="Black"
+                    BackgroundColor="Transparent"
                     Margin="15,0"
                     HeightRequest="55" />
 
-                            </Border>
+                </Border>
+                <!--Input-->
+
+                <!--Input-->
+                <Label
+                Text="E-MAIL PRINCIPAL"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,20,0,0" />
+
+                <Border
+                StrokeThickness="0"
+                BackgroundColor="#F1F2F6"
+                StrokeShape="RoundRectangle 14">
+
+                    <Entry
+                    Placeholder=""
+                    PlaceholderColor="#B0B0B0"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Margin="15,0"
+                    HeightRequest="55" />
+
+                </Border>
+                <!--Input-->
+                
+                <!--Input-->
+                <Label
+                Text="SENHA"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,20,0,0" />
+
+                <Border
+                StrokeThickness="0"
+                BackgroundColor="#F1F2F6"
+                StrokeShape="RoundRectangle 14">
+
+                    <Entry
+                    Placeholder=""
+                    PlaceholderColor="#B0B0B0"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Margin="15,0"
+                    HeightRequest="55" />
+
+                </Border>
+                <!--Input-->
 
             </VerticalStackLayout>
 
-            <!-- Seção Sobre Você -->
-            <Label
-                Text="Sobre você"
-                FontSize="24"
-                FontAttributes="Bold"
-                TextColor="#5D2E8E" />
+            <Grid
+            ColumnDefinitions="*,*"
+            ColumnSpacing="10"
+            Margin="0,0,0,0">
 
-            <Entry Placeholder="Nome Completo" BackgroundColor="#fff" TextColor="Black" />
-            <Entry Placeholder="E-mail Principal" Keyboard="Email" BackgroundColor="#F5F5F5" TextColor="Black" />
+                <!-- DATA NASCIMENTO -->
+                <VerticalStackLayout Grid.Column="0">
+                    <Label
+                    Text="DATA NASCIMENTO"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#8A97B5"
+                    Margin="4,0,0,5" />
 
-            <HorizontalStackLayout Spacing="10">
-                <DatePicker Format="dd/MM/yyyy" BackgroundColor="#F5F5F5" TextColor="#5D2E8E" />
-                <Entry Placeholder="Telefone" Keyboard="Telephone" BackgroundColor="#F5F5F5" TextColor="Black" />
-            </HorizontalStackLayout>
+                    <Border
+                    StrokeThickness="0"
+                    BackgroundColor="#F1F2F6"
+                    StrokeShape="RoundRectangle 14">
 
-            <HorizontalStackLayout Spacing="10">
-                <Entry Placeholder="Altura (cm)" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
-                <Entry Placeholder="Peso (kg)" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
-            </HorizontalStackLayout>
+                        <DatePicker
+                        Format="dd/MM/yyyy"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
+
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- TELEFONE -->
+                <VerticalStackLayout Grid.Column="1">
+
+                    <Label
+                    Text="TELEFONE"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#8A97B5"
+                    Margin="4,0,0,5" />
+
+                    <Border
+                    StrokeThickness="0"
+                    BackgroundColor="#F1F2F6"
+                    StrokeShape="RoundRectangle 14">
+
+                        <Entry
+                        Keyboard="Telephone"
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
+
+                    </Border>
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <Grid
+            ColumnDefinitions="*,*"
+            ColumnSpacing="10"
+            Margin="0,0,0,20">
+
+                <!-- PESO -->
+                <VerticalStackLayout Grid.Column="0">
+
+                    <Label
+                    Text="ALTURA (CM)"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#8A97B5"
+                    Margin="4,0,0,5" />
+
+                    <Border
+                    StrokeThickness="0"
+                    BackgroundColor="#F1F2F6"
+                    StrokeShape="RoundRectangle 14">
+
+                        <Entry
+                        Keyboard="Telephone"
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
+
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- PESO -->
+                <VerticalStackLayout Grid.Column="1">
+
+                    <Label
+                    Text="PESO (KG)"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#8A97B5"
+                    Margin="4,0,0,5" />
+
+                    <Border
+                    StrokeThickness="0"
+                    BackgroundColor="#F1F2F6"
+                    StrokeShape="RoundRectangle 14">
+
+                        <Entry
+                        Keyboard="Telephone"
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
+
+                    </Border>
+                </VerticalStackLayout>
+
+            </Grid>
+
 
             <!-- Seção Saúde Menstrual -->
             <Label
@@ -62,55 +219,354 @@
                 FontAttributes="Bold"
                 TextColor="#5D2E8E" />
 
-            <HorizontalStackLayout Spacing="10">
-                <Entry Placeholder="Duração Ciclo" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
-                <Entry Placeholder="Duração Fluxo" Keyboard="Numeric" BackgroundColor="#F5F5F5" TextColor="Black" />
-            </HorizontalStackLayout>
+            <Grid
+            ColumnDefinitions="*,*"
+            ColumnSpacing="10"
+            Margin="0,0,0,20">
 
-            <DatePicker Format="dd/MM/yyyy" BackgroundColor="#F5F5F5" TextColor="#5D2E8E" />
+                <!-- DURACAO CICLO -->
+                <VerticalStackLayout Grid.Column="0">
+                    <Label
+                    Text="DURAÇÃO DO CICLO"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#8A97B5"
+                    Margin="4,0,0,5" />
 
-            <HorizontalStackLayout Spacing="10">
-                <Button Text="Sim" BackgroundColor="#A259FF" TextColor="White" CornerRadius="25" />
-                <Button Text="Irregular" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
-            </HorizontalStackLayout>
+                    <Border
+                    StrokeThickness="0"
+                    BackgroundColor="#F1F2F6"
+                    StrokeShape="RoundRectangle 14">
 
-            <!-- Seção Contracepção -->
-            <Label
+                        <DatePicker
+                        Format="dd/MM/yyyy"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
+
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- DURACAO DO FLUXO -->
+                <VerticalStackLayout Grid.Column="1">
+
+                    <Label
+                    Text="DURAÇÃO DO FLUXO"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#8A97B5"
+                    Margin="4,0,0,5" />
+
+                    <Border
+                    StrokeThickness="0"
+                    BackgroundColor="#F1F2F6"
+                    StrokeShape="RoundRectangle 14">
+
+                        <Entry
+                        Keyboard="Telephone"
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
+
+                    </Border>
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <VerticalStackLayout Spacing="6">
+
+                <!--Input-->
+                <Label
+                Text="ÚLTIMA MENSTRUAÇÃO"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,-20,0,0" />
+
+                <Border
+                StrokeThickness="0"
+                BackgroundColor="#F1F2F6"
+                StrokeShape="RoundRectangle 14">
+
+                    <DatePicker
+                    Format="dd/MM/yyyy"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Margin="15,0"
+                    HeightRequest="55" />
+
+                </Border>
+                <!--Input-->
+
+            </VerticalStackLayout>
+
+            <!--TOGGLE-->
+            <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
+                <Label
+                Text="CICLO REGULAR?"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,0,0,0" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+
+                    <Button 
+                    x:Name="BtnSim"
+                    Grid.Column="0"
+                    Text="Sim" 
+                    BackgroundColor="White" 
+                    TextColor="Black" 
+                    BorderColor="#E5E5E5" 
+                    BorderWidth="1" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnCicloSelecionado" />
+
+                    <Button 
+                    x:Name="BtnIrregular"
+                    Grid.Column="1"
+                    Text="Irregular" 
+                    BackgroundColor="#A259FF" 
+                    TextColor="White" 
+                    BorderWidth="0" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnCicloSelecionado" />
+
+                </Grid>
+            </VerticalStackLayout>
+            <!--TOGGLE-->
+            
+
+            <!--TOGGLE-->
+            <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
+                <!-- Seção Contracepção -->
+                <Label
                 Text="Contracepção"
                 FontSize="24"
                 FontAttributes="Bold"
-                TextColor="#5D2E8E" />
+                TextColor="#5D2E8E" 
+                Margin="4,0,0,20"/>
 
-            <Label
-                Text="Usa anticoncepcional?"
-                FontSize="14"
-                TextColor="#9E9E9E" />
+                <Label
+                Text="USA ANTICONCEPCIONAL?"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,0,0,0" />
 
-            <HorizontalStackLayout Spacing="10">
-                <Button Text="Sim" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
-                <Button Text="Não" BackgroundColor="#A259FF" TextColor="White" CornerRadius="25" />
-            </HorizontalStackLayout>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
 
-            <Label
-                Text="Deseja engravidar?"
-                FontSize="14"
-                TextColor="#9E9E9E" />
+                    <Button 
+                    x:Name="BtnContSim"
+                    Grid.Column="0"
+                    Text="Sim" 
+                    BackgroundColor="White" 
+                    TextColor="Black" 
+                    BorderColor="#E5E5E5" 
+                    BorderWidth="1" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnAntiSelecionado" />
 
-            <HorizontalStackLayout Spacing="10">
-                <Button Text="Sim" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
-                <Button Text="Não" BackgroundColor="#FF5C8D" TextColor="White" CornerRadius="25" />
-                <Button Text="Talvez" BackgroundColor="White" TextColor="#5D2E8E" BorderColor="#A259FF" BorderWidth="2" CornerRadius="25" />
-            </HorizontalStackLayout>
+                    <Button 
+                    x:Name="BtnContNao"
+                    Grid.Column="1"
+                    Text="Irregular" 
+                    BackgroundColor="#A259FF" 
+                    TextColor="White" 
+                    BorderWidth="0" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnAntiSelecionado" />
 
-            <Button
-                Text="Cadastrar"
-                BackgroundColor="#A259FF"
+                </Grid>
+
+                <Label
+                Text="DESEJA ENGRAVIDAR?"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,20,0,0" />
+
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+
+                    <Button 
+                    x:Name="BtnEngSim"
+                    Grid.Column="0"
+                    Text="Sim" 
+                    BackgroundColor="White" 
+                    TextColor="Black" 
+                    BorderColor="#E5E5E5" 
+                    BorderWidth="1" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnEngravidarSelecionado" />
+
+                    <Button 
+                    x:Name="BtnEngNao"
+                    Grid.Column="1"
+                    Text="Não" 
+                    BackgroundColor="#EC4899" 
+                    TextColor="White" 
+                    BorderWidth="0" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnEngravidarSelecionado" />
+
+                    <Button 
+                    x:Name="BtnEngTalvez"
+                    Grid.Column="2"
+                    Text="Talvez" 
+                    BackgroundColor="White" 
+                    TextColor="Black" 
+                    BorderColor="#E5E5E5" 
+                    BorderWidth="1" 
+                    CornerRadius="15" 
+                    HeightRequest="50"
+                    Clicked="OnEngravidarSelecionado" />
+
+                </Grid>
+            </VerticalStackLayout>
+            <!--TOGGLE-->
+
+
+
+                <!-- COMBOBOX OBJETIVO -->
+                <VerticalStackLayout Spacing="0" Margin="0,0,0,0">
+
+                <Label
+                Text="Objetivo"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#5D2E8E" 
+                Margin="0,0,0,25"/>
+
+                <Border
+                StrokeThickness="0"
+                BackgroundColor="#F1F2F6"
+                StrokeShape="RoundRectangle 14"
+                HeightRequest="55">
+                    
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDropdownTapped" />
+                </Border.GestureRecognizers>
+
+                <Grid ColumnDefinitions="*, Auto" Padding="15,0">
+                            
+                        <Label 
+                        x:Name="LblObjetivoSelecionado"
+                        Text="Monitorar ciclo"
+                        VerticalOptions="Center"
+                        TextColor="#5D2E8E"
+                        FontAttributes="Bold" />
+
+                        <Label 
+                        Grid.Column="1"
+                        Text="▼" 
+                        TextColor="#5D2E8E"
+                        VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                    <Border 
+                    x:Name="BorderDropdown"
+                    IsVisible="False"
+                    StrokeThickness="1"
+                    Stroke="#E5E5E5"
+                    BackgroundColor="White"
+                    Margin="0,2,0,0"
+                    StrokeShape="RoundRectangle 14"
+                    ZIndex="1000">
+
+                    <CollectionView x:Name="CvObjetivos" SelectionMode="Single" SelectionChanged="OnObjetivoSelected">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Monitorar ciclo</x:String>
+                                <x:String>Engravidar</x:String>
+                                <x:String>Evitar gravidez</x:String>
+                                <x:String>Acompanhar sintomas</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15,12">
+                                    <Label Text="{Binding .}" TextColor="#5D2E8E" FontSize="15" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                        
+                    </Border>
+                    
+                </VerticalStackLayout>
+                <!-- COMBOBOX OBJETIVO -->
+
+
+            <Border 
+            BackgroundColor="#F8F5FF" 
+            StrokeThickness="0" 
+            Padding="20,15" 
+            Margin="0,0"
+            StrokeShape="RoundRectangle 40">
+
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label 
+                    Text="🛡️" 
+                    FontSize="20" 
+                    TextColor="#8A2BE2" 
+                    VerticalOptions="Center" />
+
+                    <Label 
+                    Text="SEUS DADOS ESTÃO SEGUROS CONFORME A LGPD." 
+                    FontSize="11" 
+                    FontAttributes="Bold" 
+                    TextColor="#5D2E8E" 
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+
+
+            <Border 
+            HeightRequest="60"
+            HorizontalOptions="FillAndExpand"
+            Margin="0,20"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 30">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#D84C9F" Offset="0.0" />
+                        <GradientStop Color="#A259FF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="0,5"
+                            Radius="10"
+                            Opacity="0.2" />
+                </Border.Shadow>
+
+                <Label 
+                Text="CONCLUIR ALTERAÇÕES"
                 TextColor="White"
-                CornerRadius="25"
-                HeightRequest="50"
-                WidthRequest="200"
+                FontAttributes="Bold"
+                FontSize="14"
+                CharacterSpacing="1"
                 HorizontalOptions="Center"
-                Clicked="OnCadastrarClicked" />
+                VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnConcluirClicked" />
+                </Border.GestureRecognizers>
+            </Border>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -239,8 +239,8 @@ public partial class CicloPage : ContentPage
         => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
 
     private async void OnConteudosTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(ConteudosPage));
+        => await Shell.Current.GoToAsync(nameof(EspacoSaber));
 
     private async void OnPerfilTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(PerfilPage));
+        => await Shell.Current.GoToAsync(nameof(Perfil));
 }
