@@ -41,14 +41,23 @@ public partial class Perfil : ContentPage
 
     private async void SairDaConta_Clicked(object sender, EventArgs e)
     {
-        // As duas barras "//" indicam uma rota absoluta. 
-        // Isso limpa a pilha de navegação e impede que o usuário use o botão "voltar".
         await Shell.Current.GoToAsync("//MainPage");
     }
+
     private async void CriarConta_Clicked(object sender, EventArgs e)
     {
-        // O PushAsync "empilha" a CriarContaPage por cima da página atual.
-        // Isso cria automaticamente a setinha de voltar no topo da tela.
         await Navigation.PushAsync(new CriarContaPage());
     }
+
+    // ── Navbar ────────────────────────────────────────────────────
+
+    private async void OnHojeTapped(object sender, TappedEventArgs e)
+        => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+
+    private async void OnCicloTapped(object sender, TappedEventArgs e)
+        => await Shell.Current.GoToAsync(nameof(CicloPage));
+
+    private async void OnConteudosTapped(object sender, TappedEventArgs e)
+        => await Shell.Current.GoToAsync(nameof(EspacoSaber));
 }
+

@@ -4,11 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppSaudeFeminina"
-    Title="AppSaudeFeminina">
+    xmlns:views="clr-namespace:AppSaudeFeminina.Views"
+    Shell.NavBarIsVisible="False">
 
+    <!-- Tela inicial: boas-vindas / login -->
     <ShellContent
-        Title="Home"
+        Title="Início"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <!-- Tela principal com navbar própria -->
+    <ShellContent
+        Title="Hoje"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="HomePage" />
 
 </Shell>

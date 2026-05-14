@@ -5,9 +5,9 @@
              Title="Perfil"
              BackgroundColor="#F8F9FA">
 
-    <Grid>
+    <Grid RowDefinitions="*, Auto">
 
-        <ScrollView>
+        <ScrollView Grid.Row="0">
             <VerticalStackLayout VerticalOptions="Start">
 
                 <Grid ColumnDefinitions="*, Auto" Padding="20">
@@ -85,6 +85,7 @@
         </ScrollView>
 
         <BoxView x:Name="OverlayEscuro" 
+                 Grid.RowSpan="2"
                  BackgroundColor="#201A25" 
                  Opacity="0" 
                  IsVisible="False"
@@ -95,6 +96,7 @@
         </BoxView>
 
         <Border x:Name="ModalOpcoes" 
+                Grid.RowSpan="2"
                 BackgroundColor="White" 
                 VerticalOptions="End" 
                 IsVisible="False"
@@ -146,6 +148,49 @@
                         Clicked="FecharModal_Clicked"/>
 
             </VerticalStackLayout>
+        </Border>
+
+        <!-- NavBar -->
+        <Border Grid.Row="1" BackgroundColor="White" Padding="15,10,15,20"
+                StrokeThickness="1" Stroke="#F1F5F9">
+            <Border.Shadow>
+                <Shadow Brush="#94A3B8" Offset="0,-4" Radius="10" Opacity="0.1" />
+            </Border.Shadow>
+            <Grid ColumnDefinitions="*, *, *, *">
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHojeTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                        <Label Text="❤️" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Hoje" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCicloTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                        <Label Text="📅" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Ciclo" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnConteudosTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                        <Label Text="📖" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Conteúdos" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="4">
+                    <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FDF2F8" Padding="8" StrokeThickness="0">
+                        <Label Text="👤" FontSize="20" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="Perfil" FontSize="10" TextColor="#EC4899" FontAttributes="Bold" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
         </Border>
 
     </Grid>

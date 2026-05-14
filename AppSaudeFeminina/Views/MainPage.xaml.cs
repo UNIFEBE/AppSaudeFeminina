@@ -9,11 +9,11 @@ public partial class MainPage : ContentPage
 
     private async void OnCriarContaClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CriarContaPage());
+        await Shell.Current.GoToAsync(nameof(CriarContaPage));
     }
 
     private async void OnEntrarClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EntrarPage());
+        await Shell.Current.GoToAsync(nameof(EntrarPage));
     }
 }
