@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSaudeFeminina.HomePage"
+             BackgroundColor="#F8FAFC"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Camada raiz para suportar overlay do modal -->
+    <Grid>
+
+        <!-- ── CONTEÚDO PRINCIPAL ── -->
+        <Grid RowDefinitions="Auto, *, Auto">
+
+            <!-- ROW 0: Cabeçalho Fixo -->
+            <Border Grid.Row="0" BackgroundColor="#E6FFFFFF" StrokeThickness="0" Padding="20,15">
+                <HorizontalStackLayout Spacing="10">
+                    <Border StrokeShape="RoundRectangle 20" BackgroundColor="#FCE7F3"
+                            HeightRequest="40" WidthRequest="40" StrokeThickness="0">
+                        <Label Text="❤️" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" />
+                    </Border>
+                    <Label Text="Minha Saúde Feminina" VerticalOptions="Center"
+                           FontSize="18" FontAttributes="Bold" TextColor="#4C1D95" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- ROW 1: Conteúdo Principal (Rolável) -->
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <VerticalStackLayout Padding="24" Spacing="24">
+
+                    <Label Text="Olá, Maria" FontSize="28" FontAttributes="Bold" TextColor="#4C1D95" />
+
+                    <!-- Card: Status do Ciclo -->
+                    <Border StrokeShape="RoundRectangle 24" StrokeThickness="0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#EC4899" Offset="0.0" />
+                                <GradientStop Color="#9333EA" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Shadow>
+                            <Shadow Brush="#EC4899" Offset="0,8" Radius="15" Opacity="0.3" />
+                        </Border.Shadow>
+                        <VerticalStackLayout Padding="24" Spacing="0">
+                            <Label Text="Status do Ciclo" TextColor="#FCE7F3" FontSize="14" Opacity="0.9" />
+                            <Label Text="Dia 12 do Ciclo" TextColor="White" FontSize="24" FontAttributes="Bold" Margin="0,4,0,0" />
+                            <Border StrokeShape="RoundRectangle 4" HeightRequest="8" BackgroundColor="#33FFFFFF" StrokeThickness="0" Margin="0,16,0,0">
+                                <Grid ColumnDefinitions="42*, 58*">
+                                    <BoxView Grid.Column="0" Color="White" />
+                                </Grid>
+                            </Border>
+                            <Label Text="Fase Folicular • Janela fértil em 2 dias"
+                                   TextColor="White" FontSize="14" Margin="0,16,0,0" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Grid: Preventivo e Consulta -->
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="16">
+
+                        <!-- Card Preventivo -->
+                        <Border Grid.Column="0" StrokeShape="RoundRectangle 16" Stroke="#F3E8FF"
+                                StrokeThickness="1" BackgroundColor="White" Padding="16">
+                            <Border.Shadow>
+                                <Shadow Brush="#E2E8F0" Offset="0,4" Radius="8" Opacity="0.5" />
+                            </Border.Shadow>
+                            <VerticalStackLayout Spacing="12">
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#EFF6FF"
+                                        HeightRequest="40" WidthRequest="40" HorizontalOptions="Start" StrokeThickness="0">
+                                    <Label Text="🛡️" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" />
+                                </Border>
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="PREVENTIVO" TextColor="#64748B" FontSize="12" FontAttributes="Bold" CharacterSpacing="1" />
+                                    <Label Text="Agendar Março" TextColor="#1E293B" FontSize="14" FontAttributes="Bold" />
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Card Consulta (clicável) -->
+                        <Border Grid.Column="1" StrokeShape="RoundRectangle 16" Stroke="#F3E8FF"
+                                StrokeThickness="1" BackgroundColor="White" Padding="16">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAgendarConsultaTapped" />
+                            </Border.GestureRecognizers>
+                            <Border.Shadow>
+                                <Shadow Brush="#E2E8F0" Offset="0,4" Radius="8" Opacity="0.5" />
+                            </Border.Shadow>
+                            <VerticalStackLayout Spacing="12">
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#FFF7ED"
+                                        HeightRequest="40" WidthRequest="40" HorizontalOptions="Start" StrokeThickness="0">
+                                    <Label Text="🩺" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" />
+                                </Border>
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="CONSULTA" TextColor="#64748B" FontSize="12" FontAttributes="Bold" CharacterSpacing="1" />
+                                    <Label Text="Agendar retorno" TextColor="#1E293B" FontSize="14" FontAttributes="Bold" />
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </Grid>
+
+                    <!-- Card: Dica do Dia -->
+                    <Border StrokeShape="RoundRectangle 24" BackgroundColor="#FAF5FF"
+                            Stroke="#F3E8FF" StrokeThickness="1" Padding="20" Margin="0,0,0,30">
+                        <VerticalStackLayout Spacing="12">
+                            <HorizontalStackLayout Spacing="8">
+                                <Label Text="💡" FontSize="18" VerticalOptions="Center" />
+                                <Label Text="Dica do Dia" TextColor="#581C87" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                            <Label Text="Manter-se hidratada durante esta fase ajuda a reduzir a retenção de líquidos e melhora a disposição física."
+                                   TextColor="#6B21A8" FontSize="14" FontAttributes="Italic" LineHeight="1.4" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <!-- ROW 2: NavBar -->
+            <Border Grid.Row="2" BackgroundColor="White" Padding="15,10,15,20"
+                    StrokeThickness="1" Stroke="#F1F5F9">
+                <Border.Shadow>
+                    <Shadow Brush="#94A3B8" Offset="0,-4" Radius="10" Opacity="0.1" />
+                </Border.Shadow>
+                <Grid ColumnDefinitions="*, *, *, *">
+                    <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="4">
+                        <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FDF2F8" Padding="8" StrokeThickness="0">
+                            <Label Text="❤️" FontSize="20" HorizontalOptions="Center" />
+                        </Border>
+                        <Label Text="Hoje" FontSize="10" TextColor="#EC4899" FontAttributes="Bold" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCicloTapped" />
+                        </VerticalStackLayout.GestureRecognizers>
+                        <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                            <Label Text="📅" FontSize="20" HorizontalOptions="Center" />
+                        </Border>
+                        <Label Text="Ciclo" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnConteudosTapped" />
+                        </VerticalStackLayout.GestureRecognizers>
+                        <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                            <Label Text="📖" FontSize="20" HorizontalOptions="Center" />
+                        </Border>
+                        <Label Text="Conteúdos" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPerfilTapped" />
+                        </VerticalStackLayout.GestureRecognizers>
+                        <Border StrokeShape="RoundRectangle 8" BackgroundColor="Transparent" Padding="8" StrokeThickness="0">
+                            <Label Text="👤" FontSize="20" HorizontalOptions="Center" />
+                        </Border>
+                        <Label Text="Perfil" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+        </Grid>
+
+        <!-- ── OVERLAY MODAL: Agendar Consulta ── -->
+        <Grid x:Name="ModalConsulta" IsVisible="False">
+
+            <!-- Fundo semitransparente -->
+            <BoxView Color="#7C3AED" Opacity="0.45">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFecharModalConsulta" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+
+            <!-- Painel bottom sheet -->
+            <Border StrokeShape="RoundRectangle 28,28,0,0"
+                    BackgroundColor="White" StrokeThickness="0"
+                    VerticalOptions="End" Padding="24,20,24,40">
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Handle -->
+                    <BoxView Color="#E2E8F0" HeightRequest="4" WidthRequest="40"
+                             CornerRadius="2" HorizontalOptions="Center" />
+
+                    <!-- Título -->
+                    <Label Text="Agendar Consulta" FontSize="22"
+                           FontAttributes="Bold" TextColor="#4C1D95" />
+
+                    <!-- Especialidades -->
+                    <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto"
+                          ColumnSpacing="12" RowSpacing="12">
+
+                        <Border x:Name="BtnGinecologia" Grid.Row="0" Grid.Column="0"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="#7C3AED"
+                                StrokeThickness="0" Padding="16,14">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnEspecialidadeTapped" CommandParameter="Ginecologia" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="LabelGinecologia" Text="Ginecologia" FontSize="14"
+                                   FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        </Border>
+
+                        <Border x:Name="BtnMastologia" Grid.Row="0" Grid.Column="1"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="White"
+                                Stroke="#E2E8F0" StrokeThickness="1.5" Padding="16,14">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnEspecialidadeTapped" CommandParameter="Mastologia" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="LabelMastologia" Text="Mastologia" FontSize="14"
+                                   FontAttributes="Bold" TextColor="#4C1D95" HorizontalOptions="Center" />
+                        </Border>
+
+                        <Border x:Name="BtnClinico" Grid.Row="1" Grid.Column="0"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="White"
+                                Stroke="#E2E8F0" StrokeThickness="1.5" Padding="16,14">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnEspecialidadeTapped" CommandParameter="Clínico" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="LabelClinico" Text="Clínico" FontSize="14"
+                                   FontAttributes="Bold" TextColor="#4C1D95" HorizontalOptions="Center" />
+                        </Border>
+
+                        <Border x:Name="BtnObstetricia" Grid.Row="1" Grid.Column="1"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="White"
+                                Stroke="#E2E8F0" StrokeThickness="1.5" Padding="16,14">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnEspecialidadeTapped" CommandParameter="Obstetrícia" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="LabelObstetricia" Text="Obstetrícia" FontSize="14"
+                                   FontAttributes="Bold" TextColor="#4C1D95" HorizontalOptions="Center" />
+                        </Border>
+
+                    </Grid>
+
+                    <!-- Data do Retorno -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="DATA DO RETORNO" FontSize="11" FontAttributes="Bold"
+                               TextColor="#9CA3AF" CharacterSpacing="1" />
+                        <Border StrokeShape="RoundRectangle 12" BackgroundColor="#F8FAFC"
+                                StrokeThickness="0" Padding="14,0">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <DatePicker x:Name="DatePickerConsulta"
+                                            Format="dd/MM/yyyy"
+                                            FontSize="16" TextColor="#1E293B"
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="52"
+                                            MinimumDate="2020-01-01"
+                                            MaximumDate="2030-12-31" />
+                                <Label Grid.Column="1" Text="📅" FontSize="20"
+                                       VerticalOptions="Center" Margin="0,0,4,0" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Botão Confirmar -->
+                    <Button Text="CONFIRMAR AGENDAMENTO"
+                            BackgroundColor="#EC4899" TextColor="White"
+                            FontAttributes="Bold" FontSize="14"
+                            CornerRadius="32" HeightRequest="56"
+                            Clicked="OnConfirmarAgendamento" />
+
+                </VerticalStackLayout>
+            </Border>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>
