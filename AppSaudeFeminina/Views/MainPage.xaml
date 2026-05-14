@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSaudeFeminina.MainPage"
-             BackgroundColor="White">
+             BackgroundColor="#FBF4EB">
 
     <VerticalStackLayout
         VerticalOptions="Center"
@@ -13,21 +13,19 @@
         <Border
             WidthRequest="96"
             HeightRequest="96"
-            BackgroundColor="#FCE7F3"
+            BackgroundColor="#FBD9E5"
             StrokeThickness="0"
             Rotation="12"
             StrokeShape="RoundRectangle 32"
-            Shadow="{Shadow Brush=#F9A8D4, Opacity=0.4, Radius=20, Offset='0,8'}">
+            Shadow="{Shadow Brush=#C56682, Opacity=0.4, Radius=20, Offset='0,8'}">
 
             <Grid>
-
                 <Image
                     Source="coracao_startup.png"
                     WidthRequest="80"
                     HeightRequest="80"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
-
             </Grid>
 
         </Border>
@@ -37,7 +35,8 @@
             FontSize="24"
             FontAttributes="Bold"
             HorizontalTextAlignment="Center"
-            TextColor="#5D2E8E" />
+            TextColor="#C43A4A"
+            FontFamily="LeckerliOne" />
 
         <Label
             Text="Seu espaço inteligente de acompanhamento e saúde."
@@ -47,7 +46,7 @@
 
         <Button
             Text="CRIAR CONTA"
-            BackgroundColor="#A259FF"
+            BackgroundColor="#C43A4A"
             TextColor="White"
             CornerRadius="25"
             HeightRequest="50"
@@ -56,9 +55,9 @@
 
         <Button
             Text="ENTRAR"
-            BackgroundColor="White"
-            TextColor="#A259FF"
-            BorderColor="#A259FF"
+            BackgroundColor="#FBF4EB"
+            TextColor="#C43A4A"
+            BorderColor="#C43A4A"
             BorderWidth="2"
             CornerRadius="25"
             HeightRequest="50"

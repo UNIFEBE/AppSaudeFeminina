@@ -18,7 +18,7 @@
                 Text="Sobre você"
                 FontSize="24"
                 FontAttributes="Bold"
-                TextColor="#5D2E8E" 
+                TextColor="#C43A4A" 
                 Margin="0,0,0,20"/>
 
                 <!--Input-->
@@ -26,18 +26,19 @@
                 Text="NOME COMPLETO"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,0,0,0" />
 
                 <Border
-                StrokeThickness="0"
-                BackgroundColor="#F1F2F6"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
+                BackgroundColor="White"
                 StrokeShape="RoundRectangle 14">
 
                     <Entry
                     Placeholder=""
                     PlaceholderColor="#B0B0B0"
-                    TextColor="Black"
+                    TextColor="#3A1A1A"
                     BackgroundColor="Transparent"
                     Margin="15,0"
                     HeightRequest="55" />
@@ -50,18 +51,19 @@
                 Text="E-MAIL PRINCIPAL"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,20,0,0" />
 
                 <Border
-                StrokeThickness="0"
-                BackgroundColor="#F1F2F6"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
+                BackgroundColor="White"
                 StrokeShape="RoundRectangle 14">
 
                     <Entry
                     Placeholder=""
                     PlaceholderColor="#B0B0B0"
-                    TextColor="Black"
+                    TextColor="#3A1A1A"
                     BackgroundColor="Transparent"
                     Margin="15,0"
                     HeightRequest="55" />
@@ -74,18 +76,19 @@
                 Text="SENHA"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,20,0,0" />
 
                 <Border
-                StrokeThickness="0"
-                BackgroundColor="#F1F2F6"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
+                BackgroundColor="White"
                 StrokeShape="RoundRectangle 14">
 
                     <Entry
                     Placeholder=""
                     PlaceholderColor="#B0B0B0"
-                    TextColor="Black"
+                    TextColor="#3A1A1A"
                     BackgroundColor="Transparent"
                     Margin="15,0"
                     HeightRequest="55" />
@@ -106,17 +109,18 @@
                     Text="DATA NASCIMENTO"
                     FontSize="12"
                     FontAttributes="Bold"
-                    TextColor="#8A97B5"
+                    TextColor="#C56682"
                     Margin="4,0,0,5" />
 
                     <Border
-                    StrokeThickness="0"
-                    BackgroundColor="#F1F2F6"
+                    StrokeThickness="1"
+                Stroke="#FBD9E5"
+                    BackgroundColor="White"
                     StrokeShape="RoundRectangle 14">
 
                         <DatePicker
                         Format="dd/MM/yyyy"
-                        TextColor="Black"
+                        TextColor="#3A1A1A"
                         BackgroundColor="Transparent"
                         Margin="15,0"
                         HeightRequest="55" />
@@ -131,18 +135,19 @@
                     Text="TELEFONE"
                     FontSize="12"
                     FontAttributes="Bold"
-                    TextColor="#8A97B5"
+                    TextColor="#C56682"
                     Margin="4,0,0,5" />
 
                     <Border
-                    StrokeThickness="0"
-                    BackgroundColor="#F1F2F6"
+                    StrokeThickness="1"
+                Stroke="#FBD9E5"
+                    BackgroundColor="White"
                     StrokeShape="RoundRectangle 14">
 
                         <Entry
                         Keyboard="Telephone"
                         PlaceholderColor="#B0B0B0"
-                        TextColor="Black"
+                        TextColor="#3A1A1A"
                         BackgroundColor="Transparent"
                         Margin="15,0"
                         HeightRequest="55" />
@@ -164,18 +169,19 @@
                     Text="ALTURA (CM)"
                     FontSize="12"
                     FontAttributes="Bold"
-                    TextColor="#8A97B5"
+                    TextColor="#C56682"
                     Margin="4,0,0,5" />
 
                     <Border
-                    StrokeThickness="0"
-                    BackgroundColor="#F1F2F6"
+                    StrokeThickness="1"
+                Stroke="#FBD9E5"
+                    BackgroundColor="White"
                     StrokeShape="RoundRectangle 14">
 
                         <Entry
                         Keyboard="Telephone"
                         PlaceholderColor="#B0B0B0"
-                        TextColor="Black"
+                        TextColor="#3A1A1A"
                         BackgroundColor="Transparent"
                         Margin="15,0"
                         HeightRequest="55" />
@@ -190,18 +196,19 @@
                     Text="PESO (KG)"
                     FontSize="12"
                     FontAttributes="Bold"
-                    TextColor="#8A97B5"
+                    TextColor="#C56682"
                     Margin="4,0,0,5" />
 
                     <Border
-                    StrokeThickness="0"
-                    BackgroundColor="#F1F2F6"
+                    StrokeThickness="1"
+                Stroke="#FBD9E5"
+                    BackgroundColor="White"
                     StrokeShape="RoundRectangle 14">
 
                         <Entry
                         Keyboard="Telephone"
                         PlaceholderColor="#B0B0B0"
-                        TextColor="Black"
+                        TextColor="#3A1A1A"
                         BackgroundColor="Transparent"
                         Margin="15,0"
                         HeightRequest="55" />
@@ -217,7 +224,7 @@
                 Text="Saúde Menstrual"
                 FontSize="24"
                 FontAttributes="Bold"
-                TextColor="#5D2E8E" />
+                TextColor="#C43A4A" />
 
             <Grid
             ColumnDefinitions="*,*"
@@ -230,17 +237,18 @@
                     Text="DURAÇÃO DO CICLO"
                     FontSize="12"
                     FontAttributes="Bold"
-                    TextColor="#8A97B5"
+                    TextColor="#C56682"
                     Margin="4,0,0,5" />
 
                     <Border
-                    StrokeThickness="0"
-                    BackgroundColor="#F1F2F6"
+                    StrokeThickness="1"
+                Stroke="#FBD9E5"
+                    BackgroundColor="White"
                     StrokeShape="RoundRectangle 14">
 
                         <DatePicker
                         Format="dd/MM/yyyy"
-                        TextColor="Black"
+                        TextColor="#3A1A1A"
                         BackgroundColor="Transparent"
                         Margin="15,0"
                         HeightRequest="55" />
@@ -255,18 +263,19 @@
                     Text="DURAÇÃO DO FLUXO"
                     FontSize="12"
                     FontAttributes="Bold"
-                    TextColor="#8A97B5"
+                    TextColor="#C56682"
                     Margin="4,0,0,5" />
 
                     <Border
-                    StrokeThickness="0"
-                    BackgroundColor="#F1F2F6"
+                    StrokeThickness="1"
+                Stroke="#FBD9E5"
+                    BackgroundColor="White"
                     StrokeShape="RoundRectangle 14">
 
                         <Entry
                         Keyboard="Telephone"
                         PlaceholderColor="#B0B0B0"
-                        TextColor="Black"
+                        TextColor="#3A1A1A"
                         BackgroundColor="Transparent"
                         Margin="15,0"
                         HeightRequest="55" />
@@ -283,17 +292,18 @@
                 Text="ÚLTIMA MENSTRUAÇÃO"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,-20,0,0" />
 
                 <Border
-                StrokeThickness="0"
-                BackgroundColor="#F1F2F6"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
+                BackgroundColor="White"
                 StrokeShape="RoundRectangle 14">
 
                     <DatePicker
                     Format="dd/MM/yyyy"
-                    TextColor="Black"
+                    TextColor="#3A1A1A"
                     BackgroundColor="Transparent"
                     Margin="15,0"
                     HeightRequest="55" />
@@ -309,7 +319,7 @@
                 Text="CICLO REGULAR?"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,0,0,0" />
 
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
@@ -319,8 +329,8 @@
                     Grid.Column="0"
                     Text="Sim" 
                     BackgroundColor="White" 
-                    TextColor="Black" 
-                    BorderColor="#E5E5E5" 
+                    TextColor="#3A1A1A" 
+                    BorderColor="#FBD9E5" 
                     BorderWidth="1" 
                     CornerRadius="15" 
                     HeightRequest="50"
@@ -330,7 +340,7 @@
                     x:Name="BtnIrregular"
                     Grid.Column="1"
                     Text="Irregular" 
-                    BackgroundColor="#A259FF" 
+                    BackgroundColor="#C43A4A" 
                     TextColor="White" 
                     BorderWidth="0" 
                     CornerRadius="15" 
@@ -349,14 +359,14 @@
                 Text="Contracepção"
                 FontSize="24"
                 FontAttributes="Bold"
-                TextColor="#5D2E8E" 
+                TextColor="#C43A4A" 
                 Margin="4,0,0,20"/>
 
                 <Label
                 Text="USA ANTICONCEPCIONAL?"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,0,0,0" />
 
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
@@ -366,8 +376,8 @@
                     Grid.Column="0"
                     Text="Sim" 
                     BackgroundColor="White" 
-                    TextColor="Black" 
-                    BorderColor="#E5E5E5" 
+                    TextColor="#3A1A1A" 
+                    BorderColor="#FBD9E5" 
                     BorderWidth="1" 
                     CornerRadius="15" 
                     HeightRequest="50"
@@ -377,7 +387,7 @@
                     x:Name="BtnContNao"
                     Grid.Column="1"
                     Text="Irregular" 
-                    BackgroundColor="#A259FF" 
+                    BackgroundColor="#C43A4A" 
                     TextColor="White" 
                     BorderWidth="0" 
                     CornerRadius="15" 
@@ -390,7 +400,7 @@
                 Text="DESEJA ENGRAVIDAR?"
                 FontSize="12"
                 FontAttributes="Bold"
-                TextColor="#8A97B5"
+                TextColor="#C56682"
                 Margin="4,20,0,0" />
 
                 <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
@@ -400,8 +410,8 @@
                     Grid.Column="0"
                     Text="Sim" 
                     BackgroundColor="White" 
-                    TextColor="Black" 
-                    BorderColor="#E5E5E5" 
+                    TextColor="#3A1A1A" 
+                    BorderColor="#FBD9E5" 
                     BorderWidth="1" 
                     CornerRadius="15" 
                     HeightRequest="50"
@@ -411,7 +421,7 @@
                     x:Name="BtnEngNao"
                     Grid.Column="1"
                     Text="Não" 
-                    BackgroundColor="#EC4899" 
+                    BackgroundColor="#C43A4A" 
                     TextColor="White" 
                     BorderWidth="0" 
                     CornerRadius="15" 
@@ -423,8 +433,8 @@
                     Grid.Column="2"
                     Text="Talvez" 
                     BackgroundColor="White" 
-                    TextColor="Black" 
-                    BorderColor="#E5E5E5" 
+                    TextColor="#3A1A1A" 
+                    BorderColor="#FBD9E5" 
                     BorderWidth="1" 
                     CornerRadius="15" 
                     HeightRequest="50"
@@ -443,12 +453,13 @@
                 Text="Objetivo"
                 FontSize="24"
                 FontAttributes="Bold"
-                TextColor="#5D2E8E" 
+                TextColor="#C43A4A" 
                 Margin="0,0,0,25"/>
 
                 <Border
-                StrokeThickness="0"
-                BackgroundColor="#F1F2F6"
+                StrokeThickness="1"
+                Stroke="#FBD9E5"
+                BackgroundColor="White"
                 StrokeShape="RoundRectangle 14"
                 HeightRequest="55">
                     
@@ -462,13 +473,13 @@
                         x:Name="LblObjetivoSelecionado"
                         Text="Monitorar ciclo"
                         VerticalOptions="Center"
-                        TextColor="#5D2E8E"
+                        TextColor="#C43A4A"
                         FontAttributes="Bold" />
 
                         <Label 
                         Grid.Column="1"
                         Text="▼" 
-                        TextColor="#5D2E8E"
+                        TextColor="#C43A4A"
                         VerticalOptions="Center" />
                     </Grid>
                 </Border>
@@ -477,7 +488,7 @@
                     x:Name="BorderDropdown"
                     IsVisible="False"
                     StrokeThickness="1"
-                    Stroke="#E5E5E5"
+                    Stroke="#FBD9E5"
                     BackgroundColor="White"
                     Margin="0,2,0,0"
                     StrokeShape="RoundRectangle 14"
@@ -495,7 +506,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="15,12">
-                                    <Label Text="{Binding .}" TextColor="#5D2E8E" FontSize="15" />
+                                    <Label Text="{Binding .}" TextColor="#C43A4A" FontSize="15" />
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -508,7 +519,7 @@
 
 
             <Border 
-            BackgroundColor="#F8F5FF" 
+            BackgroundColor="#FBD9E5" 
             StrokeThickness="0" 
             Padding="20,15" 
             Margin="0,0"
@@ -518,14 +529,14 @@
                     <Label 
                     Text="🛡️" 
                     FontSize="20" 
-                    TextColor="#8A2BE2" 
+                    TextColor="#C43A4A" 
                     VerticalOptions="Center" />
 
                     <Label 
                     Text="SEUS DADOS ESTÃO SEGUROS CONFORME A LGPD." 
                     FontSize="11" 
                     FontAttributes="Bold" 
-                    TextColor="#5D2E8E" 
+                    TextColor="#C43A4A" 
                     VerticalOptions="Center"
                     VerticalTextAlignment="Center" />
                 </HorizontalStackLayout>
@@ -542,8 +553,8 @@
 
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Color="#D84C9F" Offset="0.0" />
-                        <GradientStop Color="#A259FF" Offset="1.0" />
+                        <GradientStop Color="#C43A4A" Offset="0.0" />
+                        <GradientStop Color="#C56682" Offset="1.0" />
                     </LinearGradientBrush>
                 </Border.Background>
 
