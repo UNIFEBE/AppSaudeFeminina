@@ -1,3 +1,5 @@
+using AppSaudeFeminina.Views;
+
 namespace AppSaudeFeminina;
 
 public partial class CriarContaPage : ContentPage
@@ -187,6 +189,6 @@ public partial class CriarContaPage : ContentPage
         await border.ScaleToAsync(1.0, 100);
 
         // Mudou de DisplayAlert para DisplayAlertAsync
-        await this.DisplayAlertAsync("Sucesso", "Alterações concluídas!", "OK");
+        await Navigation.PushAsync(new EspacoSaber());
     }
 }

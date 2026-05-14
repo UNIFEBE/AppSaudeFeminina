@@ -68,6 +68,30 @@
 
                 </Border>
                 <!--Input-->
+                
+                <!--Input-->
+                <Label
+                Text="SENHA"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="#8A97B5"
+                Margin="4,20,0,0" />
+
+                <Border
+                StrokeThickness="0"
+                BackgroundColor="#F1F2F6"
+                StrokeShape="RoundRectangle 14">
+
+                    <Entry
+                    Placeholder=""
+                    PlaceholderColor="#B0B0B0"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Margin="15,0"
+                    HeightRequest="55" />
+
+                </Border>
+                <!--Input-->
 
             </VerticalStackLayout>
 
