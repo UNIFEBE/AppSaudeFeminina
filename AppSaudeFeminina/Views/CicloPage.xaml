@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSaudeFeminina.Views.CicloPage"
-             BackgroundColor="#F0EEF8"
+             BackgroundColor="#FBF4EB"
              Shell.NavBarIsVisible="False">
 
     <!-- Camada raiz: permite sobrepor o modal -->
@@ -12,14 +12,14 @@
         <Grid RowDefinitions="Auto, *, Auto">
 
             <!-- Cabeçalho -->
-            <Border Grid.Row="0" BackgroundColor="#E6FFFFFF" StrokeThickness="0" Padding="20,15">
+            <Border Grid.Row="0" BackgroundColor="#FBF4EB" StrokeThickness="0" Padding="20,15">
                 <HorizontalStackLayout Spacing="10">
-                    <Border StrokeShape="RoundRectangle 20" BackgroundColor="#FCE7F3"
+                    <Border StrokeShape="RoundRectangle 20" BackgroundColor="#FBD9E5"
                             HeightRequest="40" WidthRequest="40" StrokeThickness="0">
                         <Label Text="❤️" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" />
                     </Border>
                     <Label Text="Minha Saúde Feminina" VerticalOptions="Center"
-                           FontSize="18" FontAttributes="Bold" TextColor="#4C1D95" />
+                           FontSize="18" FontAttributes="Bold" TextColor="#C43A4A" />
                 </HorizontalStackLayout>
             </Border>
 
@@ -30,15 +30,15 @@
                     <!-- Título + badge Ciclo -->
                     <Grid ColumnDefinitions="*, Auto" Margin="0,4,0,0">
                         <Label Text="Acompanhamento" FontSize="26" FontAttributes="Bold"
-                               TextColor="#4C1D95" VerticalOptions="Center" />
+                               TextColor="#C43A4A" VerticalOptions="Center" />
                         <Border Grid.Column="1" StrokeShape="RoundRectangle 20"
-                                BackgroundColor="#EDE9FE" StrokeThickness="0" Padding="12,8">
+                                BackgroundColor="#FBD9E5" StrokeThickness="0" Padding="12,8">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnAbrirModalCiclo" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout Spacing="6">
                                 <Label Text="✏️" FontSize="14" VerticalOptions="Center" />
-                                <Label Text="Ciclo" FontSize="14" TextColor="#7C3AED"
+                                <Label Text="Ciclo" FontSize="14" TextColor="#C43A4A"
                                        FontAttributes="Bold" VerticalOptions="Center" />
                             </HorizontalStackLayout>
                         </Border>
@@ -48,24 +48,24 @@
                     <Border StrokeShape="RoundRectangle 24" BackgroundColor="White"
                             StrokeThickness="0" Padding="16">
                         <Border.Shadow>
-                            <Shadow Brush="#C4B5FD" Offset="0,4" Radius="12" Opacity="0.15" />
+                            <Shadow Brush="#C56682" Offset="0,4" Radius="12" Opacity="0.15" />
                         </Border.Shadow>
                         <VerticalStackLayout Spacing="12">
 
                             <!-- Navegação mês -->
                             <Grid ColumnDefinitions="Auto, *, Auto" Margin="0,4">
-                                <Button Grid.Column="0" Text="‹" FontSize="24" TextColor="#7C3AED"
+                                <Button Grid.Column="0" Text="‹" FontSize="24" TextColor="#C43A4A"
                                         BackgroundColor="Transparent" Padding="0"
                                         WidthRequest="40" HeightRequest="40"
                                         Clicked="OnMesAnteriorClicked" />
                                 <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="0">
                                     <Label x:Name="LabelMes" Text="MAIO" FontSize="18"
-                                           FontAttributes="Bold" TextColor="#4C1D95"
+                                           FontAttributes="Bold" TextColor="#C43A4A"
                                            HorizontalOptions="Center" />
                                     <Label x:Name="LabelAno" Text="2026" FontSize="13"
                                            TextColor="#9CA3AF" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
-                                <Button Grid.Column="2" Text="›" FontSize="24" TextColor="#7C3AED"
+                                <Button Grid.Column="2" Text="›" FontSize="24" TextColor="#C43A4A"
                                         BackgroundColor="Transparent" Padding="0"
                                         WidthRequest="40" HeightRequest="40"
                                         Clicked="OnProximoMesClicked" />
@@ -94,17 +94,17 @@
 
                         <Border x:Name="BtnMenstruacao" Grid.Column="0"
                                 StrokeShape="RoundRectangle 32" BackgroundColor="White"
-                                Stroke="#EC4899" StrokeThickness="2" Padding="14,16">
+                                Stroke="#C43A4A" StrokeThickness="2" Padding="14,16">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnMenstruacaoTapped" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#FCE7F3"
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#FBD9E5"
                                         HeightRequest="36" WidthRequest="36" StrokeThickness="0">
                                     <Label Text="🔥" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
                                 </Border>
                                 <Label Text="MENSTRUAÇÃO" FontSize="12" FontAttributes="Bold"
-                                       TextColor="#1E293B" VerticalOptions="Center" />
+                                       TextColor="#3A1A1A" VerticalOptions="Center" />
                             </HorizontalStackLayout>
                         </Border>
 
@@ -115,12 +115,12 @@
                                 <TapGestureRecognizer Tapped="OnFertilTapped" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#FEF9C3"
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#FBF4EB"
                                         HeightRequest="36" WidthRequest="36" StrokeThickness="0">
                                     <Label Text="✅" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
                                 </Border>
                                 <Label Text="PERÍODO&#10;FÉRTIL" FontSize="12" FontAttributes="Bold"
-                                       TextColor="#1E293B" VerticalOptions="Center" />
+                                       TextColor="#3A1A1A" VerticalOptions="Center" />
                             </HorizontalStackLayout>
                         </Border>
 
@@ -130,10 +130,10 @@
                     <Border StrokeShape="RoundRectangle 20" BackgroundColor="White"
                             StrokeThickness="0" Padding="16">
                         <Border.Shadow>
-                            <Shadow Brush="#C4B5FD" Offset="0,4" Radius="12" Opacity="0.1" />
+                            <Shadow Brush="#C56682" Offset="0,4" Radius="12" Opacity="0.1" />
                         </Border.Shadow>
                         <HorizontalStackLayout Spacing="14">
-                            <Border StrokeShape="RoundRectangle 14" BackgroundColor="#EDE9FE"
+                            <Border StrokeShape="RoundRectangle 14" BackgroundColor="#FBD9E5"
                                     HeightRequest="48" WidthRequest="48" StrokeThickness="0">
                                 <Label Text="📅" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
@@ -141,22 +141,22 @@
                                 <Label Text="STATUS ATUAL" FontSize="11" FontAttributes="Bold"
                                        TextColor="#9CA3AF" CharacterSpacing="1" />
                                 <Label x:Name="LabelStatus" Text="28 dias • 5 dias de fluxo"
-                                       FontSize="15" FontAttributes="Bold" TextColor="#1E293B" />
+                                       FontSize="15" FontAttributes="Bold" TextColor="#3A1A1A" />
                             </VerticalStackLayout>
                         </HorizontalStackLayout>
                     </Border>
 
                     <!-- Card Próximo Evento -->
-                    <Border StrokeShape="RoundRectangle 20" BackgroundColor="#6D28D9"
+                    <Border StrokeShape="RoundRectangle 20" BackgroundColor="#C43A4A"
                             StrokeThickness="0" Padding="16" Margin="0,0,0,8">
                         <HorizontalStackLayout Spacing="14">
-                            <Border StrokeShape="RoundRectangle 14" BackgroundColor="#7C3AED"
+                            <Border StrokeShape="RoundRectangle 14" BackgroundColor="#8B1A2A"
                                     HeightRequest="48" WidthRequest="48" StrokeThickness="0">
                                 <Label Text="💧" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
                             <VerticalStackLayout Spacing="2" VerticalOptions="Center">
                                 <Label Text="PRÓXIMO EVENTO" FontSize="11" FontAttributes="Bold"
-                                       TextColor="#DDD6FE" CharacterSpacing="1" />
+                                       TextColor="#FBD9E5" CharacterSpacing="1" />
                                 <Label x:Name="LabelProximoEvento" Text="Próxima menstruação em 1 dia."
                                        FontSize="15" FontAttributes="Bold" TextColor="White" />
                             </VerticalStackLayout>
@@ -168,9 +168,9 @@
 
             <!-- NavBar inferior -->
             <Border Grid.Row="2" BackgroundColor="White" Padding="15,10,15,20"
-                    StrokeThickness="1" Stroke="#F1F5F9">
+                    StrokeThickness="1" Stroke="#FBD9E5">
                 <Border.Shadow>
-                    <Shadow Brush="#94A3B8" Offset="0,-4" Radius="10" Opacity="0.1" />
+                    <Shadow Brush="#C56682" Offset="0,-4" Radius="10" Opacity="0.1" />
                 </Border.Shadow>
                 <Grid ColumnDefinitions="*, *, *, *">
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
@@ -183,10 +183,10 @@
                         <Label Text="Hoje" FontSize="10" TextColor="#64748B" FontAttributes="Bold" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="4">
-                        <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FDF2F8" Padding="8" StrokeThickness="0">
+                        <Border StrokeShape="RoundRectangle 8" BackgroundColor="#FBD9E5" Padding="8" StrokeThickness="0">
                             <Label Text="📅" FontSize="20" HorizontalOptions="Center" />
                         </Border>
-                        <Label Text="Ciclo" FontSize="10" TextColor="#EC4899" FontAttributes="Bold" HorizontalOptions="Center" />
+                        <Label Text="Ciclo" FontSize="10" TextColor="#C43A4A" FontAttributes="Bold" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4" Opacity="0.6">
                         <VerticalStackLayout.GestureRecognizers>
@@ -214,8 +214,8 @@
         <!-- ── OVERLAY MODAL ── -->
         <Grid x:Name="ModalOverlay" IsVisible="False">
 
-            <!-- Fundo escurecido/desfocado -->
-            <BoxView Color="#7C3AED" Opacity="0.45">
+            <!-- Fundo escurecido -->
+            <BoxView Color="#C43A4A" Opacity="0.45">
                 <BoxView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnFecharModal" />
                 </BoxView.GestureRecognizers>
@@ -223,38 +223,38 @@
 
             <!-- Painel bottom sheet -->
             <Border StrokeShape="RoundRectangle 28,28,0,0"
-                    BackgroundColor="White" StrokeThickness="0"
+                    BackgroundColor="#FBF4EB" StrokeThickness="0"
                     VerticalOptions="End" Padding="24,20,24,40">
                 <VerticalStackLayout Spacing="20">
 
                     <!-- Handle -->
-                    <BoxView Color="#E2E8F0" HeightRequest="4" WidthRequest="40"
+                    <BoxView Color="#FBD9E5" HeightRequest="4" WidthRequest="40"
                              CornerRadius="2" HorizontalOptions="Center" />
 
                     <!-- Título -->
                     <Label Text="Alterar Ciclo Rápido" FontSize="22"
-                           FontAttributes="Bold" TextColor="#4C1D95" />
+                           FontAttributes="Bold" TextColor="#C43A4A" FontFamily="LeckerliOne" />
 
                     <!-- Duração + Fluxo -->
                     <Grid ColumnDefinitions="*, 24, *" ColumnSpacing="0">
                         <VerticalStackLayout Grid.Column="0" Spacing="6">
                             <Label Text="DURAÇÃO" FontSize="11" FontAttributes="Bold"
-                                   TextColor="#9CA3AF" CharacterSpacing="1" />
-                            <Border StrokeShape="RoundRectangle 12" BackgroundColor="#F8FAFC"
-                                    StrokeThickness="0" Padding="14,0">
+                                   TextColor="#C56682" CharacterSpacing="1" />
+                            <Border StrokeShape="RoundRectangle 12" BackgroundColor="White"
+                                    StrokeThickness="1" Stroke="#FBD9E5" Padding="14,0">
                                 <Entry x:Name="EntryDuracao" Text="28" Keyboard="Numeric"
-                                       FontSize="16" TextColor="#1E293B"
+                                       FontSize="16" TextColor="#3A1A1A"
                                        BackgroundColor="Transparent" HeightRequest="52" />
                             </Border>
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Grid.Column="2" Spacing="6">
                             <Label Text="FLUXO" FontSize="11" FontAttributes="Bold"
-                                   TextColor="#9CA3AF" CharacterSpacing="1" />
-                            <Border StrokeShape="RoundRectangle 12" BackgroundColor="#F8FAFC"
-                                    StrokeThickness="0" Padding="14,0">
+                                   TextColor="#C56682" CharacterSpacing="1" />
+                            <Border StrokeShape="RoundRectangle 12" BackgroundColor="White"
+                                    StrokeThickness="1" Stroke="#FBD9E5" Padding="14,0">
                                 <Entry x:Name="EntryFluxo" Text="5" Keyboard="Numeric"
-                                       FontSize="16" TextColor="#1E293B"
+                                       FontSize="16" TextColor="#3A1A1A"
                                        BackgroundColor="Transparent" HeightRequest="52" />
                             </Border>
                         </VerticalStackLayout>
@@ -263,14 +263,14 @@
                     <!-- Início da última -->
                     <VerticalStackLayout Spacing="6">
                         <Label Text="INÍCIO DA ÚLTIMA" FontSize="11" FontAttributes="Bold"
-                               TextColor="#9CA3AF" CharacterSpacing="1" />
-                        <Border StrokeShape="RoundRectangle 12" BackgroundColor="#F8FAFC"
-                                StrokeThickness="0" Padding="14,0">
+                               TextColor="#C56682" CharacterSpacing="1" />
+                        <Border StrokeShape="RoundRectangle 12" BackgroundColor="White"
+                                StrokeThickness="1" Stroke="#FBD9E5" Padding="14,0">
                             <Grid ColumnDefinitions="*, Auto">
                                 <DatePicker x:Name="DatePickerInicio"
                                             Format="dd/MM/yyyy"
                                             Date="2026-05-14"
-                                            FontSize="16" TextColor="#1E293B"
+                                            FontSize="16" TextColor="#3A1A1A"
                                             BackgroundColor="Transparent"
                                             HeightRequest="52"
                                             MinimumDate="2020-01-01"
@@ -283,7 +283,7 @@
 
                     <!-- Botão Salvar -->
                     <Button Text="SALVAR ALTERAÇÕES"
-                            BackgroundColor="#7C3AED" TextColor="White"
+                            BackgroundColor="#C43A4A" TextColor="White"
                             FontAttributes="Bold" FontSize="15"
                             CornerRadius="32" HeightRequest="56"
                             Clicked="OnSalvarCiclo" />
