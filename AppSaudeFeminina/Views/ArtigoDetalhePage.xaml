@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSaudeFeminina.Views.ArtigoDetalhePage"
+             BackgroundColor="#FBF4EB"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" BackgroundColor="#C43A4A" StrokeThickness="0" Padding="20,50,20,25">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,30,30" />
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="Auto, *">
+                <Border StrokeThickness="0" BackgroundColor="Transparent" Padding="0"
+                        StrokeShape="RoundRectangle 0" VerticalOptions="Center"
+                        HeightRequest="30" WidthRequest="30">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnVoltarTapped" />
+                    </Border.GestureRecognizers>
+                    <Image Source="setavoltar.svg" HeightRequest="24" WidthRequest="24" 
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+                <Label Grid.Column="1" x:Name="LblTitulo" Text="" FontSize="20" TextColor="White" 
+                       FontAttributes="Bold" LineBreakMode="WordWrap" 
+                       VerticalOptions="Center" Margin="15,0,0,0" />
+            </Grid>
+        </Border>
+
+        <!-- Conteúdo -->
+        <ScrollView Grid.Row="1" Padding="20" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- Loading -->
+                <ActivityIndicator x:Name="LoadingIndicator" IsRunning="True" IsVisible="True" Color="#C43A4A" />
+
+                <!-- Resumo -->
+                <Border x:Name="ResumoCard" BackgroundColor="White" StrokeThickness="0" Padding="20" IsVisible="False">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.15" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Resumo" FontSize="14" FontAttributes="Bold" TextColor="#C43A4A" />
+                        <Label x:Name="LblResumo" Text="" FontSize="15" TextColor="#4B5563" LineHeight="1.5" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Conteúdo HTML via WebView -->
+                <Border x:Name="ConteudoCard" BackgroundColor="White" StrokeThickness="0" Padding="0" IsVisible="False">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#E7A48C" Offset="0,4" Radius="10" Opacity="0.15" />
+                    </Border.Shadow>
+                    <WebView x:Name="WebViewConteudo" HeightRequest="500">
+                        <WebView.Source>
+                            <HtmlWebViewSource x:Name="HtmlSource" Html="" />
+                        </WebView.Source>
+                    </WebView>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
