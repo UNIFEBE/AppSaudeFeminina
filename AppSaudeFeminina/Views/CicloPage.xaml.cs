@@ -1,4 +1,6 @@
 using Microsoft.Maui.Controls.Shapes;
+using AppSaudeFeminina.Models;
+using AppSaudeFeminina.Services;
 
 namespace AppSaudeFeminina.Views;
 
@@ -7,30 +9,20 @@ public partial class CicloPage : ContentPage
     private DateTime _mesAtual = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
     private readonly DateTime _hoje = DateTime.Today;
 
-    private bool _mostrarMenstruacao = false;
-    private bool _mostrarFertil = false;
+    private readonly CicloApiService _cicloApi = new();
 
-    // Dados do ciclo (editáveis pelo modal)
-    private int _duracaoCiclo = 28;
-    private int _duracaoFluxo = 5;
-    private DateTime _inicioUltima = new DateTime(2026, 5, 14);
+    // Dados carregados da API
+    private PrevisaoCicloModel? _previsao;
+    private List<CicloRegistroModel> _registros = new();
 
-    private readonly HashSet<DateTime> _diasMenstruacao = new()
-    {
-        new DateTime(2026, 5, 13), new DateTime(2026, 5, 14), new DateTime(2026, 5, 15),
-        new DateTime(2026, 5, 16), new DateTime(2026, 5, 17), new DateTime(2026, 5, 18)
-    };
-
-    private readonly HashSet<DateTime> _diasFertil = new()
-    {
-        new DateTime(2026, 5, 24), new DateTime(2026, 5, 25), new DateTime(2026, 5, 26),
-        new DateTime(2026, 5, 27), new DateTime(2026, 5, 28), new DateTime(2026, 5, 29)
-    };
+    // Períodos para pintar no calendário
+    private readonly HashSet<DateTime> _diasMenstruacao = new();
+    private readonly HashSet<DateTime> _diasPrevisao = new();
 
     private static readonly Color CorMenstruacaoFundo = Color.FromArgb("#FCE7F3");
     private static readonly Color CorMenstruacaoTexto = Color.FromArgb("#EC4899");
-    private static readonly Color CorFertilFundo      = Color.FromArgb("#FEF9C3");
-    private static readonly Color CorFertilTexto      = Color.FromArgb("#CA8A04");
+    private static readonly Color CorPrevisaoFundo    = Color.FromArgb("#DBEAFE");
+    private static readonly Color CorPrevisaoTexto    = Color.FromArgb("#2563EB");
     private static readonly Color CorHojeFundo        = Color.FromArgb("#4C1D95");
     private static readonly Color CorPadraoTexto      = Color.FromArgb("#4C1D95");
 
@@ -38,18 +30,103 @@ public partial class CicloPage : ContentPage
     {
         InitializeComponent();
         RenderizarCalendario();
-        AtualizarBotoes();
-        AtualizarCards();
     }
 
-    // ── Modal ─────────────────────────────────────────────────────
-
-    private void OnAbrirModalCiclo(object sender, TappedEventArgs e)
+    protected override async void OnAppearing()
     {
-        EntryDuracao.Text       = _duracaoCiclo.ToString();
-        EntryFluxo.Text         = _duracaoFluxo.ToString();
-        DatePickerInicio.Date   = _inicioUltima;
-        ModalOverlay.IsVisible  = true;
+        base.OnAppearing();
+        await CarregarDadosDaApi();
+    }
+
+    // ── Carregar dados da API ─────────────────────────────────────
+
+    private async Task CarregarDadosDaApi()
+    {
+        var usuarioId = SessaoUsuario.UsuarioId;
+        if (string.IsNullOrEmpty(usuarioId))
+        {
+            LabelPrevisao.Text = "Faça login para ver sua previsão.";
+            return;
+        }
+
+        try
+        {
+            // Carrega previsão (inclui últimos registros)
+            _previsao = await _cicloApi.GetPrevisaoAsync(usuarioId);
+
+            // Carrega todos os registros para o histórico
+            _registros = await _cicloApi.GetCicloRegistrosAsync(usuarioId);
+
+            AtualizarCardPrevisao();
+            RecalcularDiasCalendario();
+            RenderizarCalendario();
+            RenderizarHistorico();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[CicloPage] Erro ao carregar: {ex.Message}");
+        }
+    }
+
+    private void AtualizarCardPrevisao()
+    {
+        if (_previsao is null || _previsao.TotalRegistros == 0)
+        {
+            LabelPrevisao.Text = "Registre seu primeiro período para ver a previsão.";
+            LabelCicloMedio.Text = "-- dias";
+            LabelDuracaoMedia.Text = "-- dias";
+            LabelTotalRegistros.Text = "0";
+            return;
+        }
+
+        if (_previsao.ProximaMenstruacao.HasValue)
+        {
+            var proxima = _previsao.ProximaMenstruacao.Value;
+            var dias = _previsao.DiasParaProxima;
+
+            if (dias > 0)
+                LabelPrevisao.Text = $"Próxima menstruação em {dias} dia{(dias > 1 ? "s" : "")} ({proxima:dd/MM})";
+            else if (dias == 0)
+                LabelPrevisao.Text = "Menstruação prevista para hoje!";
+            else
+                LabelPrevisao.Text = $"Menstruação prevista há {Math.Abs(dias)} dia(s) atrás";
+        }
+
+        LabelCicloMedio.Text = $"{_previsao.CicloMedio} dias";
+        LabelDuracaoMedia.Text = $"{_previsao.DuracaoMediaPeriodo} dias";
+        LabelTotalRegistros.Text = _previsao.TotalRegistros.ToString();
+    }
+
+    private void RecalcularDiasCalendario()
+    {
+        _diasMenstruacao.Clear();
+        _diasPrevisao.Clear();
+
+        // Pinta os dias de menstruação registrados
+        foreach (var reg in _registros)
+        {
+            var fim = reg.DataFim ?? reg.DataInicio.AddDays((_previsao?.DuracaoMediaPeriodo ?? 5) - 1);
+            for (var d = reg.DataInicio; d <= fim; d = d.AddDays(1))
+                _diasMenstruacao.Add(d.Date);
+        }
+
+        // Pinta os dias de previsão do próximo ciclo
+        if (_previsao?.ProximaMenstruacao.HasValue == true)
+        {
+            var inicio = _previsao.ProximaMenstruacao.Value;
+            var duracao = _previsao.DuracaoMediaPeriodo;
+            for (int i = 0; i < duracao; i++)
+                _diasPrevisao.Add(inicio.AddDays(i).Date);
+        }
+    }
+
+    // ── Modal Registrar Período ───────────────────────────────────
+
+    private void OnRegistrarPeriodoTapped(object sender, TappedEventArgs e)
+    {
+        DatePickerInicio.Date = _hoje;
+        DatePickerFim.Date = _hoje;
+        ModalOverlay.IsVisible = true;
     }
 
     private void OnFecharModal(object sender, TappedEventArgs e)
@@ -57,49 +134,135 @@ public partial class CicloPage : ContentPage
         ModalOverlay.IsVisible = false;
     }
 
-    private void OnSalvarCiclo(object sender, EventArgs e)
+    private async void OnSalvarPeriodo(object sender, EventArgs e)
     {
-        if (int.TryParse(EntryDuracao.Text, out int dur) && dur > 0)
-            _duracaoCiclo = dur;
+        var usuarioId = SessaoUsuario.UsuarioId;
+        if (string.IsNullOrEmpty(usuarioId))
+        {
+            ModalOverlay.IsVisible = false;
+            return;
+        }
 
-        if (int.TryParse(EntryFluxo.Text, out int flu) && flu > 0)
-            _duracaoFluxo = flu;
+        var dataInicio = DatePickerInicio.Date ?? _hoje;
+        var dataFim = DatePickerFim.Date;
 
-        _inicioUltima = DatePickerInicio.Date ?? _inicioUltima;
+        // Se fim == inicio, considera como período ainda em andamento (sem fim)
+        DateTime? fim = (dataFim.HasValue && dataFim.Value > dataInicio) ? dataFim.Value : null;
 
-        // Recalcula dias de menstruação e fértil com base nos novos dados
-        RecalcularDias();
-        RenderizarCalendario();
-        AtualizarCards();
+        var request = new CreateCicloRegistroRequest
+        {
+            UsuarioId = usuarioId,
+            DataInicio = dataInicio,
+            DataFim = fim
+        };
 
         ModalOverlay.IsVisible = false;
+
+        try
+        {
+            var result = await _cicloApi.CreateCicloRegistroAsync(request);
+            if (result is not null)
+            {
+                // Recarrega tudo
+                await CarregarDadosDaApi();
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[CicloPage] Erro ao salvar período: {ex.Message}");
+        }
     }
 
-    private void RecalcularDias()
-    {
-        _diasMenstruacao.Clear();
-        for (int i = 0; i < _duracaoFluxo; i++)
-            _diasMenstruacao.Add(_inicioUltima.AddDays(i));
+    // ── Histórico ─────────────────────────────────────────────────
 
-        // Janela fértil: ~14 dias antes do próximo ciclo, por 6 dias
-        var proximoCiclo = _inicioUltima.AddDays(_duracaoCiclo);
-        var inicioFertil = proximoCiclo.AddDays(-14);
-        _diasFertil.Clear();
-        for (int i = 0; i < 6; i++)
-            _diasFertil.Add(inicioFertil.AddDays(i));
+    private void RenderizarHistorico()
+    {
+        ListaHistorico.Children.Clear();
+
+        if (_registros.Count == 0)
+        {
+            ListaHistorico.Children.Add(new Label
+            {
+                Text = "Nenhum período registrado ainda.",
+                FontSize = 14,
+                TextColor = Color.FromArgb("#9CA3AF"),
+                HorizontalOptions = LayoutOptions.Center,
+                Margin = new Thickness(0, 10)
+            });
+            return;
+        }
+
+        foreach (var reg in _registros)
+        {
+            var card = CriarCardHistorico(reg);
+            ListaHistorico.Children.Add(card);
+        }
     }
 
-    private void AtualizarCards()
+    private Border CriarCardHistorico(CicloRegistroModel reg)
     {
-        LabelStatus.Text = $"{_duracaoCiclo} dias • {_duracaoFluxo} dias de fluxo";
+        var fimText = reg.DataFim.HasValue
+            ? reg.DataFim.Value.ToString("dd/MM/yyyy")
+            : "Em andamento";
 
-        var proximaCiclo = _inicioUltima.AddDays(_duracaoCiclo);
-        int diasRestantes = (proximaCiclo - _hoje).Days;
-        LabelProximoEvento.Text = diasRestantes > 0
-            ? $"Próxima menstruação em {diasRestantes} dia{(diasRestantes > 1 ? "s" : "")}."
-            : diasRestantes == 0
-                ? "Menstruação prevista para hoje."
-                : "Menstruação em atraso.";
+        var duracaoText = reg.DuracaoPeriodo.HasValue
+            ? $"{reg.DuracaoPeriodo} dias"
+            : "---";
+
+        var cicloText = reg.DuracaoCiclo.HasValue
+            ? $"Ciclo: {reg.DuracaoCiclo} dias"
+            : "";
+
+        var content = new VerticalStackLayout { Spacing = 4 };
+
+        content.Children.Add(new HorizontalStackLayout
+        {
+            Spacing = 8,
+            Children =
+            {
+                new Label { Text = "\U0001F534", FontSize = 16, VerticalOptions = LayoutOptions.Center },
+                new Label
+                {
+                    Text = $"{reg.DataInicio:dd/MM/yyyy}  →  {fimText}",
+                    FontSize = 14, FontAttributes = FontAttributes.Bold,
+                    TextColor = Color.FromArgb("#3A1A1A"), VerticalOptions = LayoutOptions.Center
+                }
+            }
+        });
+
+        var detailsLayout = new HorizontalStackLayout { Spacing = 16 };
+        detailsLayout.Children.Add(new Label
+        {
+            Text = $"Duração: {duracaoText}",
+            FontSize = 12, TextColor = Color.FromArgb("#6B7280")
+        });
+
+        if (!string.IsNullOrEmpty(cicloText))
+        {
+            detailsLayout.Children.Add(new Label
+            {
+                Text = cicloText,
+                FontSize = 12, TextColor = Color.FromArgb("#6B7280")
+            });
+        }
+
+        content.Children.Add(detailsLayout);
+
+        return new Border
+        {
+            StrokeShape = new RoundRectangle { CornerRadius = 16 },
+            BackgroundColor = Colors.White,
+            StrokeThickness = 0,
+            Padding = new Thickness(16, 12),
+            Content = content,
+            Shadow = new Shadow
+            {
+                Brush = new SolidColorBrush(Color.FromArgb("#C56682")),
+                Offset = new Point(0, 2),
+                Radius = 8,
+                Opacity = 0.1f
+            }
+        };
     }
 
     // ── Calendário ────────────────────────────────────────────────
@@ -136,19 +299,19 @@ public partial class CicloPage : ContentPage
                 continue;
             }
 
-            var data   = new DateTime(_mesAtual.Year, _mesAtual.Month, dia);
-            var celula_ = CriarCelulaDia(data, dia);
-            Grid.SetRow(celula_, row);
-            Grid.SetColumn(celula_, col);
-            GridDias.Children.Add(celula_);
+            var data = new DateTime(_mesAtual.Year, _mesAtual.Month, dia);
+            var celulaDia = CriarCelulaDia(data, dia);
+            Grid.SetRow(celulaDia, row);
+            Grid.SetColumn(celulaDia, col);
+            GridDias.Children.Add(celulaDia);
         }
     }
 
     private Border CriarCelulaDia(DateTime data, int dia)
     {
         bool isHoje        = data == _hoje;
-        bool isMenstruacao = _mostrarMenstruacao && _diasMenstruacao.Contains(data);
-        bool isFertil      = _mostrarFertil      && _diasFertil.Contains(data);
+        bool isMenstruacao = _diasMenstruacao.Contains(data);
+        bool isPrevisao    = _diasPrevisao.Contains(data);
 
         Color fundo = Colors.Transparent;
         Color texto = CorPadraoTexto;
@@ -163,10 +326,10 @@ public partial class CicloPage : ContentPage
             fundo = CorMenstruacaoFundo;
             texto = CorMenstruacaoTexto;
         }
-        else if (isFertil)
+        else if (isPrevisao)
         {
-            fundo = CorFertilFundo;
-            texto = CorFertilTexto;
+            fundo = CorPrevisaoFundo;
+            texto = CorPrevisaoTexto;
         }
 
         return new Border
@@ -202,35 +365,6 @@ public partial class CicloPage : ContentPage
     {
         _mesAtual = _mesAtual.AddMonths(1);
         RenderizarCalendario();
-    }
-
-    // ── Botões toggle ─────────────────────────────────────────────
-
-    private void OnMenstruacaoTapped(object sender, TappedEventArgs e)
-    {
-        _mostrarMenstruacao = !_mostrarMenstruacao;
-        AtualizarBotoes();
-        RenderizarCalendario();
-    }
-
-    private void OnFertilTapped(object sender, TappedEventArgs e)
-    {
-        _mostrarFertil = !_mostrarFertil;
-        AtualizarBotoes();
-        RenderizarCalendario();
-    }
-
-    private void AtualizarBotoes()
-    {
-        BtnMenstruacao.BackgroundColor = _mostrarMenstruacao ? CorMenstruacaoFundo : Colors.White;
-        BtnMenstruacao.Stroke          = new SolidColorBrush(Color.FromArgb("#EC4899"));
-        BtnMenstruacao.StrokeThickness = _mostrarMenstruacao ? 2.5 : 2;
-
-        BtnFertil.BackgroundColor = _mostrarFertil ? CorFertilFundo : Colors.White;
-        BtnFertil.Stroke          = new SolidColorBrush(_mostrarFertil
-            ? Color.FromArgb("#CA8A04")
-            : Color.FromArgb("#D1D5DB"));
-        BtnFertil.StrokeThickness = _mostrarFertil ? 2.5 : 2;
     }
 
     // ── Navbar ────────────────────────────────────────────────────
