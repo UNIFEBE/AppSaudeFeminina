@@ -9,215 +9,195 @@
         <VerticalStackLayout
             Padding="20"
             Spacing="25">
-            
-            
+
             <VerticalStackLayout Spacing="6">
 
                 <!-- Seção Sobre Você -->
                 <Label
-                Text="Sobre você"
-                FontSize="24"
-                FontAttributes="Bold"
-                TextColor="#C43A4A" 
-                Margin="0,0,0,20"/>
+                    Text="Sobre você"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="#C43A4A"
+                    Margin="0,0,0,20"/>
 
-                <!--Input-->
+                <!-- NOME -->
                 <Label
-                Text="NOME COMPLETO"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,0,0,0" />
+                    Text="NOME COMPLETO"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,0,0,0" />
 
                 <Border
-                StrokeThickness="1"
-                Stroke="#FBD9E5"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 14">
-
+                    StrokeThickness="1"
+                    Stroke="#FBD9E5"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 14">
                     <Entry
-                    Placeholder=""
-                    PlaceholderColor="#B0B0B0"
-                    TextColor="#3A1A1A"
-                    BackgroundColor="Transparent"
-                    Margin="15,0"
-                    HeightRequest="55" />
-
+                        x:Name="NomeEntry"
+                        Placeholder=""
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="#3A1A1A"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
                 </Border>
-                <!--Input-->
 
-                <!--Input-->
+                <!-- EMAIL -->
                 <Label
-                Text="E-MAIL PRINCIPAL"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,20,0,0" />
+                    Text="E-MAIL PRINCIPAL"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,20,0,0" />
 
                 <Border
-                StrokeThickness="1"
-                Stroke="#FBD9E5"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 14">
-
+                    StrokeThickness="1"
+                    Stroke="#FBD9E5"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 14">
                     <Entry
-                    Placeholder=""
-                    PlaceholderColor="#B0B0B0"
-                    TextColor="#3A1A1A"
-                    BackgroundColor="Transparent"
-                    Margin="15,0"
-                    HeightRequest="55" />
-
+                        x:Name="EmailEntry"
+                        Placeholder=""
+                        Keyboard="Email"
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="#3A1A1A"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
                 </Border>
-                <!--Input-->
-                
-                <!--Input-->
+
+                <!-- SENHA -->
                 <Label
-                Text="SENHA"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,20,0,0" />
+                    Text="SENHA"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,20,0,0" />
 
                 <Border
-                StrokeThickness="1"
-                Stroke="#FBD9E5"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 14">
-
+                    StrokeThickness="1"
+                    Stroke="#FBD9E5"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 14">
                     <Entry
-                    Placeholder=""
-                    PlaceholderColor="#B0B0B0"
-                    TextColor="#3A1A1A"
-                    BackgroundColor="Transparent"
-                    Margin="15,0"
-                    HeightRequest="55" />
-
+                        x:Name="SenhaEntry"
+                        IsPassword="True"
+                        Placeholder=""
+                        PlaceholderColor="#B0B0B0"
+                        TextColor="#3A1A1A"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
                 </Border>
-                <!--Input-->
 
             </VerticalStackLayout>
 
+            <!-- DATA NASCIMENTO + TELEFONE -->
             <Grid
-            ColumnDefinitions="*,*"
-            ColumnSpacing="10"
-            Margin="0,0,0,0">
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10">
 
-                <!-- DATA NASCIMENTO -->
                 <VerticalStackLayout Grid.Column="0">
                     <Label
-                    Text="DATA NASCIMENTO"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    TextColor="#C56682"
-                    Margin="4,0,0,5" />
-
+                        Text="DATA NASCIMENTO"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#C56682"
+                        Margin="4,0,0,5" />
                     <Border
-                    StrokeThickness="1"
-                Stroke="#FBD9E5"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14">
-
+                        StrokeThickness="1"
+                        Stroke="#FBD9E5"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 14">
                         <DatePicker
-                        Format="dd/MM/yyyy"
-                        TextColor="#3A1A1A"
-                        BackgroundColor="Transparent"
-                        Margin="15,0"
-                        HeightRequest="55" />
-
+                            x:Name="DataNascimentoPicker"
+                            Format="dd/MM/yyyy"
+                            TextColor="#3A1A1A"
+                            BackgroundColor="Transparent"
+                            Margin="15,0"
+                            HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- TELEFONE -->
                 <VerticalStackLayout Grid.Column="1">
-
                     <Label
-                    Text="TELEFONE"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    TextColor="#C56682"
-                    Margin="4,0,0,5" />
-
+                        Text="TELEFONE"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#C56682"
+                        Margin="4,0,0,5" />
                     <Border
-                    StrokeThickness="1"
-                Stroke="#FBD9E5"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14">
-
+                        StrokeThickness="1"
+                        Stroke="#FBD9E5"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 14">
                         <Entry
-                        Keyboard="Telephone"
-                        PlaceholderColor="#B0B0B0"
-                        TextColor="#3A1A1A"
-                        BackgroundColor="Transparent"
-                        Margin="15,0"
-                        HeightRequest="55" />
-
+                            x:Name="TelefoneEntry"
+                            Keyboard="Telephone"
+                            PlaceholderColor="#B0B0B0"
+                            TextColor="#3A1A1A"
+                            BackgroundColor="Transparent"
+                            Margin="15,0"
+                            HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
 
             </Grid>
 
+            <!-- ALTURA + PESO -->
             <Grid
-            ColumnDefinitions="*,*"
-            ColumnSpacing="10"
-            Margin="0,0,0,20">
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                Margin="0,0,0,20">
 
-                <!-- PESO -->
                 <VerticalStackLayout Grid.Column="0">
-
                     <Label
-                    Text="ALTURA (CM)"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    TextColor="#C56682"
-                    Margin="4,0,0,5" />
-
+                        Text="ALTURA (CM)"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#C56682"
+                        Margin="4,0,0,5" />
                     <Border
-                    StrokeThickness="1"
-                Stroke="#FBD9E5"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14">
-
+                        StrokeThickness="1"
+                        Stroke="#FBD9E5"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 14">
                         <Entry
-                        Keyboard="Telephone"
-                        PlaceholderColor="#B0B0B0"
-                        TextColor="#3A1A1A"
-                        BackgroundColor="Transparent"
-                        Margin="15,0"
-                        HeightRequest="55" />
-
+                            x:Name="AlturaEntry"
+                            Keyboard="Numeric"
+                            PlaceholderColor="#B0B0B0"
+                            TextColor="#3A1A1A"
+                            BackgroundColor="Transparent"
+                            Margin="15,0"
+                            HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- PESO -->
                 <VerticalStackLayout Grid.Column="1">
-
                     <Label
-                    Text="PESO (KG)"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    TextColor="#C56682"
-                    Margin="4,0,0,5" />
-
+                        Text="PESO (KG)"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#C56682"
+                        Margin="4,0,0,5" />
                     <Border
-                    StrokeThickness="1"
-                Stroke="#FBD9E5"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14">
-
+                        StrokeThickness="1"
+                        Stroke="#FBD9E5"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 14">
                         <Entry
-                        Keyboard="Telephone"
-                        PlaceholderColor="#B0B0B0"
-                        TextColor="#3A1A1A"
-                        BackgroundColor="Transparent"
-                        Margin="15,0"
-                        HeightRequest="55" />
-
+                            x:Name="PesoEntry"
+                            Keyboard="Numeric"
+                            PlaceholderColor="#B0B0B0"
+                            TextColor="#3A1A1A"
+                            BackgroundColor="Transparent"
+                            Margin="15,0"
+                            HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
 
             </Grid>
-
 
             <!-- Seção Saúde Menstrual -->
             <Label
@@ -226,265 +206,236 @@
                 FontAttributes="Bold"
                 TextColor="#C43A4A" />
 
+            <!-- DURAÇÃO CICLO (dias) + DURAÇÃO FLUXO (dias) -->
             <Grid
-            ColumnDefinitions="*,*"
-            ColumnSpacing="10"
-            Margin="0,0,0,20">
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                Margin="0,0,0,20">
 
-                <!-- DURACAO CICLO -->
                 <VerticalStackLayout Grid.Column="0">
                     <Label
-                    Text="DURAÇÃO DO CICLO"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    TextColor="#C56682"
-                    Margin="4,0,0,5" />
-
+                        Text="DURAÇÃO DO CICLO (DIAS)"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#C56682"
+                        Margin="4,0,0,5" />
                     <Border
-                    StrokeThickness="1"
-                Stroke="#FBD9E5"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14">
-
-                        <DatePicker
-                        Format="dd/MM/yyyy"
-                        TextColor="#3A1A1A"
-                        BackgroundColor="Transparent"
-                        Margin="15,0"
-                        HeightRequest="55" />
-
+                        StrokeThickness="1"
+                        Stroke="#FBD9E5"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 14">
+                        <Entry
+                            x:Name="DuracaoCicloEntry"
+                            Keyboard="Numeric"
+                            Placeholder="28"
+                            PlaceholderColor="#B0B0B0"
+                            TextColor="#3A1A1A"
+                            BackgroundColor="Transparent"
+                            Margin="15,0"
+                            HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- DURACAO DO FLUXO -->
                 <VerticalStackLayout Grid.Column="1">
-
                     <Label
-                    Text="DURAÇÃO DO FLUXO"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    TextColor="#C56682"
-                    Margin="4,0,0,5" />
-
+                        Text="DURAÇÃO DO FLUXO (DIAS)"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#C56682"
+                        Margin="4,0,0,5" />
                     <Border
-                    StrokeThickness="1"
-                Stroke="#FBD9E5"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14">
-
+                        StrokeThickness="1"
+                        Stroke="#FBD9E5"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 14">
                         <Entry
-                        Keyboard="Telephone"
-                        PlaceholderColor="#B0B0B0"
-                        TextColor="#3A1A1A"
-                        BackgroundColor="Transparent"
-                        Margin="15,0"
-                        HeightRequest="55" />
-
+                            x:Name="DuracaoFluxoEntry"
+                            Keyboard="Numeric"
+                            Placeholder="5"
+                            PlaceholderColor="#B0B0B0"
+                            TextColor="#3A1A1A"
+                            BackgroundColor="Transparent"
+                            Margin="15,0"
+                            HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
 
             </Grid>
 
+            <!-- ÚLTIMA MENSTRUAÇÃO -->
             <VerticalStackLayout Spacing="6">
-
-                <!--Input-->
                 <Label
-                Text="ÚLTIMA MENSTRUAÇÃO"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,-20,0,0" />
-
+                    Text="ÚLTIMA MENSTRUAÇÃO"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,0,0,0" />
                 <Border
-                StrokeThickness="1"
-                Stroke="#FBD9E5"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 14">
-
+                    StrokeThickness="1"
+                    Stroke="#FBD9E5"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 14">
                     <DatePicker
-                    Format="dd/MM/yyyy"
-                    TextColor="#3A1A1A"
-                    BackgroundColor="Transparent"
-                    Margin="15,0"
-                    HeightRequest="55" />
-
+                        x:Name="UltimaMenstruacaoPicker"
+                        Format="dd/MM/yyyy"
+                        TextColor="#3A1A1A"
+                        BackgroundColor="Transparent"
+                        Margin="15,0"
+                        HeightRequest="55" />
                 </Border>
-                <!--Input-->
-
             </VerticalStackLayout>
 
-            <!--TOGGLE-->
+            <!-- CICLO REGULAR? -->
             <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
                 <Label
-                Text="CICLO REGULAR?"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,0,0,0" />
-
+                    Text="CICLO REGULAR?"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,0,0,0" />
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
-
-                    <Button 
-                    x:Name="BtnSim"
-                    Grid.Column="0"
-                    Text="Sim" 
-                    BackgroundColor="White" 
-                    TextColor="#3A1A1A" 
-                    BorderColor="#FBD9E5" 
-                    BorderWidth="1" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnCicloSelecionado" />
-
-                    <Button 
-                    x:Name="BtnIrregular"
-                    Grid.Column="1"
-                    Text="Irregular" 
-                    BackgroundColor="#C43A4A" 
-                    TextColor="White" 
-                    BorderWidth="0" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnCicloSelecionado" />
-
+                    <Button
+                        x:Name="BtnSim"
+                        Grid.Column="0"
+                        Text="Sim"
+                        BackgroundColor="White"
+                        TextColor="#3A1A1A"
+                        BorderColor="#FBD9E5"
+                        BorderWidth="1"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnCicloSelecionado" />
+                    <Button
+                        x:Name="BtnIrregular"
+                        Grid.Column="1"
+                        Text="Irregular"
+                        BackgroundColor="#C43A4A"
+                        TextColor="White"
+                        BorderWidth="0"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnCicloSelecionado" />
                 </Grid>
             </VerticalStackLayout>
-            <!--TOGGLE-->
-            
 
-            <!--TOGGLE-->
+            <!-- Seção Contracepção -->
             <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
-                <!-- Seção Contracepção -->
                 <Label
-                Text="Contracepção"
-                FontSize="24"
-                FontAttributes="Bold"
-                TextColor="#C43A4A" 
-                Margin="4,0,0,20"/>
+                    Text="Contracepção"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="#C43A4A"
+                    Margin="4,0,0,20"/>
 
+                <!-- USA ANTICONCEPCIONAL? -->
                 <Label
-                Text="USA ANTICONCEPCIONAL?"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,0,0,0" />
-
+                    Text="USA ANTICONCEPCIONAL?"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,0,0,0" />
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
-
-                    <Button 
-                    x:Name="BtnContSim"
-                    Grid.Column="0"
-                    Text="Sim" 
-                    BackgroundColor="White" 
-                    TextColor="#3A1A1A" 
-                    BorderColor="#FBD9E5" 
-                    BorderWidth="1" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnAntiSelecionado" />
-
-                    <Button 
-                    x:Name="BtnContNao"
-                    Grid.Column="1"
-                    Text="Irregular" 
-                    BackgroundColor="#C43A4A" 
-                    TextColor="White" 
-                    BorderWidth="0" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnAntiSelecionado" />
-
+                    <Button
+                        x:Name="BtnContSim"
+                        Grid.Column="0"
+                        Text="Sim"
+                        BackgroundColor="White"
+                        TextColor="#3A1A1A"
+                        BorderColor="#FBD9E5"
+                        BorderWidth="1"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnAntiSelecionado" />
+                    <Button
+                        x:Name="BtnContNao"
+                        Grid.Column="1"
+                        Text="Não"
+                        BackgroundColor="#C43A4A"
+                        TextColor="White"
+                        BorderWidth="0"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnAntiSelecionado" />
                 </Grid>
 
+                <!-- DESEJA ENGRAVIDAR? -->
                 <Label
-                Text="DESEJA ENGRAVIDAR?"
-                FontSize="12"
-                FontAttributes="Bold"
-                TextColor="#C56682"
-                Margin="4,20,0,0" />
-
+                    Text="DESEJA ENGRAVIDAR?"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#C56682"
+                    Margin="4,20,0,0" />
                 <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
-
-                    <Button 
-                    x:Name="BtnEngSim"
-                    Grid.Column="0"
-                    Text="Sim" 
-                    BackgroundColor="White" 
-                    TextColor="#3A1A1A" 
-                    BorderColor="#FBD9E5" 
-                    BorderWidth="1" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnEngravidarSelecionado" />
-
-                    <Button 
-                    x:Name="BtnEngNao"
-                    Grid.Column="1"
-                    Text="Não" 
-                    BackgroundColor="#C43A4A" 
-                    TextColor="White" 
-                    BorderWidth="0" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnEngravidarSelecionado" />
-
-                    <Button 
-                    x:Name="BtnEngTalvez"
-                    Grid.Column="2"
-                    Text="Talvez" 
-                    BackgroundColor="White" 
-                    TextColor="#3A1A1A" 
-                    BorderColor="#FBD9E5" 
-                    BorderWidth="1" 
-                    CornerRadius="15" 
-                    HeightRequest="50"
-                    Clicked="OnEngravidarSelecionado" />
-
+                    <Button
+                        x:Name="BtnEngSim"
+                        Grid.Column="0"
+                        Text="Sim"
+                        BackgroundColor="White"
+                        TextColor="#3A1A1A"
+                        BorderColor="#FBD9E5"
+                        BorderWidth="1"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnEngravidarSelecionado" />
+                    <Button
+                        x:Name="BtnEngNao"
+                        Grid.Column="1"
+                        Text="Não"
+                        BackgroundColor="#C43A4A"
+                        TextColor="White"
+                        BorderWidth="0"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnEngravidarSelecionado" />
+                    <Button
+                        x:Name="BtnEngTalvez"
+                        Grid.Column="2"
+                        Text="Talvez"
+                        BackgroundColor="White"
+                        TextColor="#3A1A1A"
+                        BorderColor="#FBD9E5"
+                        BorderWidth="1"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        Clicked="OnEngravidarSelecionado" />
                 </Grid>
             </VerticalStackLayout>
-            <!--TOGGLE-->
 
-
-
-                <!-- COMBOBOX OBJETIVO -->
-                <VerticalStackLayout Spacing="0" Margin="0,0,0,0">
+            <!-- OBJETIVO -->
+            <VerticalStackLayout Spacing="0" Margin="0,0,0,0">
 
                 <Label
-                Text="Objetivo"
-                FontSize="24"
-                FontAttributes="Bold"
-                TextColor="#C43A4A" 
-                Margin="0,0,0,25"/>
+                    Text="Objetivo"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="#C43A4A"
+                    Margin="0,0,0,25"/>
 
                 <Border
-                StrokeThickness="1"
-                Stroke="#FBD9E5"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 14"
-                HeightRequest="55">
-                    
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnDropdownTapped" />
-                </Border.GestureRecognizers>
-
-                <Grid ColumnDefinitions="*, Auto" Padding="15,0">
-                            
-                        <Label 
-                        x:Name="LblObjetivoSelecionado"
-                        Text="Monitorar ciclo"
-                        VerticalOptions="Center"
-                        TextColor="#C43A4A"
-                        FontAttributes="Bold" />
-
-                        <Label 
-                        Grid.Column="1"
-                        Text="▼" 
-                        TextColor="#C43A4A"
-                        VerticalOptions="Center" />
+                    StrokeThickness="1"
+                    Stroke="#FBD9E5"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 14"
+                    HeightRequest="55">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnDropdownTapped" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*, Auto" Padding="15,0">
+                        <Label
+                            x:Name="LblObjetivoSelecionado"
+                            Text="Monitorar ciclo"
+                            VerticalOptions="Center"
+                            TextColor="#C43A4A"
+                            FontAttributes="Bold" />
+                        <Label
+                            Grid.Column="1"
+                            Text="▼"
+                            TextColor="#C43A4A"
+                            VerticalOptions="Center" />
                     </Grid>
                 </Border>
 
-                    <Border 
+                <Border
                     x:Name="BorderDropdown"
                     IsVisible="False"
                     StrokeThickness="1"
@@ -493,7 +444,6 @@
                     Margin="0,2,0,0"
                     StrokeShape="RoundRectangle 14"
                     ZIndex="1000">
-
                     <CollectionView x:Name="CvObjetivos" SelectionMode="Single" SelectionChanged="OnObjetivoSelected">
                         <CollectionView.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
@@ -511,69 +461,52 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                        
-                    </Border>
-                    
-                </VerticalStackLayout>
-                <!-- COMBOBOX OBJETIVO -->
+                </Border>
 
+            </VerticalStackLayout>
 
-            <Border 
-            BackgroundColor="#FBD9E5" 
-            StrokeThickness="0" 
-            Padding="20,15" 
-            Margin="0,0"
-            StrokeShape="RoundRectangle 40">
-
+            <!-- LGPD -->
+            <Border
+                BackgroundColor="#FBD9E5"
+                StrokeThickness="0"
+                Padding="20,15"
+                StrokeShape="RoundRectangle 40">
                 <HorizontalStackLayout Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label 
-                    Text="🛡️" 
-                    FontSize="20" 
-                    TextColor="#C43A4A" 
-                    VerticalOptions="Center" />
-
-                    <Label 
-                    Text="SEUS DADOS ESTÃO SEGUROS CONFORME A LGPD." 
-                    FontSize="11" 
-                    FontAttributes="Bold" 
-                    TextColor="#C43A4A" 
-                    VerticalOptions="Center"
-                    VerticalTextAlignment="Center" />
+                    <Label Text="🛡️" FontSize="20" TextColor="#C43A4A" VerticalOptions="Center" />
+                    <Label
+                        Text="SEUS DADOS ESTÃO SEGUROS CONFORME A LGPD."
+                        FontSize="11"
+                        FontAttributes="Bold"
+                        TextColor="#C43A4A"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
                 </HorizontalStackLayout>
             </Border>
 
-
-
-            <Border 
-            HeightRequest="60"
-            HorizontalOptions="FillAndExpand"
-            Margin="0,20"
-            StrokeThickness="0"
-            StrokeShape="RoundRectangle 30">
-
+            <!-- BOTÃO CONCLUIR -->
+            <Border
+                HeightRequest="60"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,20"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 30">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#C43A4A" Offset="0.0" />
                         <GradientStop Color="#C56682" Offset="1.0" />
                     </LinearGradientBrush>
                 </Border.Background>
-
                 <Border.Shadow>
-                    <Shadow Brush="Black"
-                            Offset="0,5"
-                            Radius="10"
-                            Opacity="0.2" />
+                    <Shadow Brush="Black" Offset="0,5" Radius="10" Opacity="0.2" />
                 </Border.Shadow>
-
-                <Label 
-                Text="CONCLUIR ALTERAÇÕES"
-                TextColor="White"
-                FontAttributes="Bold"
-                FontSize="14"
-                CharacterSpacing="1"
-                HorizontalOptions="Center"
-                VerticalOptions="Center" />
-
+                <Label
+                    Text="CONCLUIR CADASTRO"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    CharacterSpacing="1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnConcluirClicked" />
                 </Border.GestureRecognizers>

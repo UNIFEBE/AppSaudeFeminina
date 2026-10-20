@@ -1,195 +1,277 @@
-using AppSaudeFeminina.Views;
+using System.Net.Http.Json;
+using AppSaudeFeminina.Services;
+using CommunityToolkit.Maui.Core;
 
 namespace AppSaudeFeminina;
 
 public partial class CriarContaPage : ContentPage
 {
+    // Estado dos toggles
+    private bool? _cicloRegular = null;       // null = não selecionado
+    private bool? _usaAnticoncepcional = null;
+    private int? _desejaEngravidar = null;    // 1=Sim 0=Não 2=Talvez
+    private int _objetivo = 1;                // default: Monitorar ciclo
+
+    // Mapa texto → valor numérico do objetivo
+    private static readonly Dictionary<string, int> _objetivoMap = new()
+    {
+        { "Monitorar ciclo",     1 },
+        { "Engravidar",          2 },
+        { "Evitar gravidez",     3 },
+        { "Acompanhar sintomas", 4 }
+    };
+
     public CriarContaPage()
     {
         InitializeComponent();
     }
 
-    private async void OnCadastrarClicked(object sender, EventArgs e)
-    {
-        await DisplayAlert("Cadastro", "Cadastro realizado com sucesso!", "OK");
-        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-    }
+    // ── Handlers de toggle ──────────────────────────────────────────────
 
     private void OnCicloSelecionado(object sender, EventArgs e)
     {
-        var botaoClicado = (Button)sender;
+        var botao = (Button)sender;
+        bool selecionouSim = botao == BtnSim;
+        _cicloRegular = selecionouSim;
 
-        // Cores padrão
-        Color corRoxa = Color.FromArgb("#A259FF");
-        Color corBranca = Colors.White;
-        Color corTextoDesativado = Colors.Black; // ou #5D2E8E se preferir
-        Color corBordaDesativada = Color.FromArgb("#E5E5E5");
-
-        if (botaoClicado == BtnSim)
-        {
-            // Ativa o Sim
-            BtnSim.BackgroundColor = corRoxa;
-            BtnSim.TextColor = corBranca;
-            BtnSim.BorderWidth = 0;
-
-            // Desativa o Irregular
-            BtnIrregular.BackgroundColor = corBranca;
-            BtnIrregular.TextColor = corTextoDesativado;
-            BtnIrregular.BorderColor = corBordaDesativada;
-            BtnIrregular.BorderWidth = 1;
-        }
-        else if (botaoClicado == BtnIrregular)
-        {
-            // Ativa o Irregular
-            BtnIrregular.BackgroundColor = corRoxa;
-            BtnIrregular.TextColor = corBranca;
-            BtnIrregular.BorderWidth = 0;
-
-            // Desativa o Sim
-            BtnSim.BackgroundColor = corBranca;
-            BtnSim.TextColor = corTextoDesativado;
-            BtnSim.BorderColor = corBordaDesativada;
-            BtnSim.BorderWidth = 1;
-        }
+        AtivarBotao(BtnSim,      selecionouSim,  "#C43A4A");
+        AtivarBotao(BtnIrregular, !selecionouSim, "#C43A4A");
     }
 
     private void OnAntiSelecionado(object sender, EventArgs e)
     {
-        var botaoClicado = (Button)sender;
+        var botao = (Button)sender;
+        bool selecionouSim = botao == BtnContSim;
+        _usaAnticoncepcional = selecionouSim;
 
-        // Cores padrão
-        Color corRoxa = Color.FromArgb("#A259FF");
-        Color corBranca = Colors.White;
-        Color corTextoDesativado = Colors.Black; // ou #5D2E8E se preferir
-        Color corBordaDesativada = Color.FromArgb("#E5E5E5");
-
-        if (botaoClicado == BtnContSim)
-        {
-            // Ativa o Sim
-            BtnContSim.BackgroundColor = corRoxa;
-            BtnContSim.TextColor = corBranca;
-            BtnContSim.BorderWidth = 0;
-
-            // Desativa o Não
-            BtnContNao.BackgroundColor = corBranca;
-            BtnContNao.TextColor = corTextoDesativado;
-            BtnContNao.BorderColor = corBordaDesativada;
-            BtnContNao.BorderWidth = 1;
-        }
-        else if (botaoClicado == BtnContNao)
-        {
-            // Ativa o Não
-            BtnContNao.BackgroundColor = corRoxa;
-            BtnContNao.TextColor = corBranca;
-            BtnContNao.BorderWidth = 0;
-
-            // Desativa o Sim
-            BtnContSim.BackgroundColor = corBranca;
-            BtnContSim.TextColor = corTextoDesativado;
-            BtnContSim.BorderColor = corBordaDesativada;
-            BtnContSim.BorderWidth = 1;
-        }
+        AtivarBotao(BtnContSim, selecionouSim,  "#C43A4A");
+        AtivarBotao(BtnContNao, !selecionouSim, "#C43A4A");
     }
 
     private void OnEngravidarSelecionado(object sender, EventArgs e)
     {
-        var botaoClicado = (Button)sender;
+        var botao = (Button)sender;
 
-        // Cores padrão
-        Color corRoxa = Color.FromArgb("#EC4899");
-        Color corBranca = Colors.White;
-        Color corTextoDesativado = Colors.Black; // ou #5D2E8E se preferir
-        Color corBordaDesativada = Color.FromArgb("#E5E5E5");
+        if (botao == BtnEngSim)       _desejaEngravidar = 1;
+        else if (botao == BtnEngNao)  _desejaEngravidar = 0;
+        else                          _desejaEngravidar = 2;
 
-        if (botaoClicado == BtnEngSim)
-        {
-            // Ativa o Sim
-            BtnEngSim.BackgroundColor = corRoxa;
-            BtnEngSim.TextColor = corBranca;
-            BtnEngSim.BorderWidth = 0;
-
-            // Desativa o Não
-            BtnEngNao.BackgroundColor = corBranca;
-            BtnEngNao.TextColor = corTextoDesativado;
-            BtnEngNao.BorderColor = corBordaDesativada;
-            BtnEngNao.BorderWidth = 1;
-
-            // Desativa o Talvez
-            BtnEngTalvez.BackgroundColor = corBranca;
-            BtnEngTalvez.TextColor = corTextoDesativado;
-            BtnEngTalvez.BorderColor = corBordaDesativada;
-            BtnEngTalvez.BorderWidth = 1;
-        }
-        else if (botaoClicado == BtnEngNao)
-        {
-            // Ativa o Não
-            BtnEngNao.BackgroundColor = corRoxa;
-            BtnEngNao.TextColor = corBranca;
-            BtnEngNao.BorderWidth = 0;
-
-            // Desativa o Sim
-            BtnEngSim.BackgroundColor = corBranca;
-            BtnEngSim.TextColor = corTextoDesativado;
-            BtnEngSim.BorderColor = corBordaDesativada;
-            BtnEngSim.BorderWidth = 1;
-
-            // Desativa o Talvez
-            BtnEngTalvez.BackgroundColor = corBranca;
-            BtnEngTalvez.TextColor = corTextoDesativado;
-            BtnEngTalvez.BorderColor = corBordaDesativada;
-            BtnEngTalvez.BorderWidth = 1;
-        }
-        else if(botaoClicado == BtnEngTalvez)
-        {
-            // Ativa o Não
-            BtnEngTalvez.BackgroundColor = corRoxa;
-            BtnEngTalvez.TextColor = corBranca;
-            BtnEngTalvez.BorderWidth = 0;
-
-            // Desativa o Sim
-            BtnEngSim.BackgroundColor = corBranca;
-            BtnEngSim.TextColor = corTextoDesativado;
-            BtnEngSim.BorderColor = corBordaDesativada;
-            BtnEngSim.BorderWidth = 1;
-
-            // Desativa o Talvez
-            BtnEngNao.BackgroundColor = corBranca;
-            BtnEngNao.TextColor = corTextoDesativado;
-            BtnEngNao.BorderColor = corBordaDesativada;
-            BtnEngNao.BorderWidth = 1;
-
-        }
+        AtivarBotao(BtnEngSim,   botao == BtnEngSim,   "#EC4899");
+        AtivarBotao(BtnEngNao,   botao == BtnEngNao,   "#EC4899");
+        AtivarBotao(BtnEngTalvez, botao == BtnEngTalvez, "#EC4899");
     }
+
     private void OnDropdownTapped(object sender, EventArgs e)
     {
         BorderDropdown.IsVisible = !BorderDropdown.IsVisible;
     }
 
-    // Quando o usuário clica em uma opção
     private void OnObjetivoSelected(object sender, SelectionChangedEventArgs e)
     {
         if (e.CurrentSelection.FirstOrDefault() is string selecionado)
         {
-            // Atualiza o texto do campo "fake"
             LblObjetivoSelecionado.Text = selecionado;
-
-            // Esconde a lista novamente
+            _objetivo = _objetivoMap.TryGetValue(selecionado, out var val) ? val : 1;
             BorderDropdown.IsVisible = false;
-
-            // Limpa a seleção para permitir clicar na mesma opção de novo se necessário
             ((CollectionView)sender).SelectedItem = null;
         }
     }
 
+    // ── Submit ──────────────────────────────────────────────────────────
+
     private async void OnConcluirClicked(object sender, EventArgs e)
     {
         var border = (Border)sender;
-
-        // Mudou de ScaleTo para ScaleToAsync
         await border.ScaleToAsync(0.95, 100);
         await border.ScaleToAsync(1.0, 100);
 
-        // Mudou de DisplayAlert para DisplayAlertAsync
-        await Navigation.PushAsync(new HomePage());
+        // Validação dos campos obrigatórios
+        var nome  = NomeEntry.Text?.Trim();
+        var email = EmailEntry.Text?.Trim();
+        var senha = SenhaEntry.Text;
+
+        if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+        {
+            await ToastHelper.MostrarAsync("Nome, e-mail e senha são obrigatórios.");
+            return;
+        }
+
+        // Campos opcionais
+        decimal? altura = null;
+        decimal? peso   = null;
+
+        if (!string.IsNullOrWhiteSpace(AlturaEntry.Text) &&
+            decimal.TryParse(AlturaEntry.Text.Replace(",", "."),
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out var alturaVal))
+            altura = alturaVal;
+
+        if (!string.IsNullOrWhiteSpace(PesoEntry.Text) &&
+            decimal.TryParse(PesoEntry.Text.Replace(",", "."),
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out var pesoVal))
+            peso = pesoVal;
+
+        int duracaoCiclo   = 28;
+        int duracaoMenstr  = 5;
+
+        if (!string.IsNullOrWhiteSpace(DuracaoCicloEntry.Text) &&
+            int.TryParse(DuracaoCicloEntry.Text, out var dc))
+            duracaoCiclo = dc;
+
+        if (!string.IsNullOrWhiteSpace(DuracaoFluxoEntry.Text) &&
+            int.TryParse(DuracaoFluxoEntry.Text, out var df))
+            duracaoMenstr = df;
+
+        try
+        {
+            var usuarioCriado = await CriarUsuarioAsync(
+                nome, email, senha,
+                (DateTime?)DataNascimentoPicker.Date,
+                TelefoneEntry.Text?.Trim(),
+                altura, peso,
+                _usaAnticoncepcional,
+                _desejaEngravidar,
+                _objetivo);
+
+            if (usuarioCriado is null)
+            {
+                await ToastHelper.MostrarAsync("Não foi possível criar a conta. Verifique os dados.", ToastDuration.Long);
+                return;
+            }
+
+            // Salva sessão
+            SessaoUsuario.UsuarioId = usuarioCriado.Id.ToString();
+            SessaoUsuario.Nome      = usuarioCriado.Nome;
+            SessaoUsuario.Email     = usuarioCriado.Email;
+
+            // Salva configuração do ciclo
+            await SalvarCicloConfigAsync(
+                usuarioCriado.Id,
+                (DateTime?)UltimaMenstruacaoPicker.Date,
+                duracaoCiclo,
+                duracaoMenstr,
+                _cicloRegular ?? true);
+
+            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[CriarConta] Erro: {ex.Message}");
+            await ToastHelper.MostrarAsync("Não foi possível conectar ao servidor.", ToastDuration.Long);
+        }
+    }
+
+    // ── Chamadas à API ──────────────────────────────────────────────────
+
+    private async Task<UsuarioCriadoResponse?> CriarUsuarioAsync(
+        string nome, string email, string senha,
+        DateTime? dataNascimento, string? telefone,
+        decimal? altura, decimal? peso,
+        bool? usaAnticoncepcional, int? desejaEngravidar, int objetivo)
+    {
+        using var client = CriarHttpClient();
+
+        var payload = new
+        {
+            Nome              = nome,
+            Email             = email,
+            Senha             = senha,
+            DataNascimento    = dataNascimento,
+            Telefone          = telefone,
+            Altura            = altura,
+            Peso              = peso,
+            UsaAnticoncepcional = usaAnticoncepcional,
+            DesejaEngravidar  = desejaEngravidar,
+            Objetivo          = objetivo
+        };
+
+        var response = await client.PostAsJsonAsync(BaseUrl("api/usuarios"), payload);
+
+        if (response.IsSuccessStatusCode)
+            return await response.Content.ReadFromJsonAsync<UsuarioCriadoResponse>(
+                new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+        // Extrai mensagem de erro da API (ex: "Email já cadastrado.")
+        var erro = await response.Content.ReadFromJsonAsync<ApiErroResponse>(
+            new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+        await ToastHelper.MostrarAsync(erro?.Message ?? "Erro ao criar conta.", ToastDuration.Long);
+        return null;
+    }
+
+    private async Task SalvarCicloConfigAsync(
+        Guid usuarioId, DateTime? ultimaMenstruacao,
+        int duracaoCiclo, int duracaoMenstruacao, bool cicloRegular)
+    {
+        using var client = CriarHttpClient();
+
+        var payload = new
+        {
+            UsuarioId               = usuarioId,
+            DataUltimaMenstruacao   = ultimaMenstruacao ?? DateTime.Today,
+            DuracaoCiclo            = duracaoCiclo,
+            DuracaoMenstruacao      = duracaoMenstruacao,
+            CicloRegular            = cicloRegular
+        };
+
+        var response = await client.PostAsJsonAsync(BaseUrl("api/ciclo/config"), payload);
+
+        if (!response.IsSuccessStatusCode)
+            System.Diagnostics.Debug.WriteLine("[CriarConta] Aviso: ciclo config não salvo.");
+    }
+
+    // ── Helpers ─────────────────────────────────────────────────────────
+
+    private static HttpClient CriarHttpClient()
+    {
+        var handler = new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+        };
+        return new HttpClient(handler);
+    }
+
+    private static string BaseUrl(string path)
+    {
+        string host = DeviceInfo.Platform == DevicePlatform.Android
+            ? "http://10.0.2.2:5026"
+            : "https://localhost:7252";
+
+        return $"{host}/{path}";
+    }
+
+    /// <summary>
+    /// Liga/desliga visualmente um botão de toggle.
+    /// </summary>
+    private static void AtivarBotao(Button btn, bool ativo, string corAtiva)
+    {
+        if (ativo)
+        {
+            btn.BackgroundColor = Color.FromArgb(corAtiva);
+            btn.TextColor       = Colors.White;
+            btn.BorderWidth     = 0;
+        }
+        else
+        {
+            btn.BackgroundColor = Colors.White;
+            btn.TextColor       = Colors.Black;
+            btn.BorderColor     = Color.FromArgb("#E5E5E5");
+            btn.BorderWidth     = 1;
+        }
+    }
+
+    // ── Modelos de resposta (internos) ───────────────────────────────────
+
+    private class UsuarioCriadoResponse
+    {
+        public Guid   Id    { get; set; }
+        public string Nome  { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+    }
+
+    private class ApiErroResponse
+    {
+        public string? Message { get; set; }
     }
 }

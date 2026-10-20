@@ -2,6 +2,9 @@ using AppSaudeFeminina.Views;
 
 namespace AppSaudeFeminina;
 
+using AppSaudeFeminina.Services;
+using CommunityToolkit.Maui.Core;
+
 public partial class HomePage : ContentPage
 {
     private string _especialidadeSelecionada = "Ginecologia";
@@ -68,8 +71,7 @@ public partial class HomePage : ContentPage
             : "data não selecionada";
 
         ModalConsulta.IsVisible = false;
-        await DisplayAlert("Agendamento Confirmado",
-            $"{_especialidadeSelecionada} agendado para {dataStr}.", "OK");
+        await ToastHelper.MostrarAsync($"{_especialidadeSelecionada} agendado para {dataStr}.", ToastDuration.Long);
     }
 
     // ── Navbar ────────────────────────────────────────────────────
