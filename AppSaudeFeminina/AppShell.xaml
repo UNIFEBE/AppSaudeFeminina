@@ -19,4 +19,10 @@
         ContentTemplate="{DataTemplate local:HomePage}"
         Route="HomePage" />
 
+    <!-- Perfil (necessário como ShellContent para navegação absoluta funcionar no Android) -->
+    <ShellContent
+        Title="Perfil"
+        ContentTemplate="{DataTemplate views:Perfil}"
+        Route="Perfil" />
+
 </Shell>

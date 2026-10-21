@@ -1,0 +1,15 @@
+.vs/
+bin/
+obj/
+
+*.user
+*.suo
+*.userprefs
+
+TestResults/
+
+*.apk
+*.aab
+
+.DS_Store
+Thumbs.db

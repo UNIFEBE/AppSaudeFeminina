@@ -1,63 +1,151 @@
+using AppSaudeFeminina.Services;
+
 namespace AppSaudeFeminina.Views;
 
 public partial class Perfil : ContentPage
 {
+    private readonly UsuarioApiService _usuarioApiService = new();
+    private readonly CicloApiService   _cicloApiService   = new();
+
     public Perfil()
     {
         InitializeComponent();
     }
 
-    // Evento disparado ao clicar na engrenagem
-    private async void OnSettingsClicked(object sender, EventArgs e)
+    protected override async void OnAppearing()
     {
-        // 1. Torna o fundo escuro e o modal visíveis na tela
-        OverlayEscuro.IsVisible = true;
-        ModalOpcoes.IsVisible = true;
-
-        // 2. Executa as duas animações ao mesmo tempo (Task.WhenAll)
-        // O fundo vai para 60% de opacidade (0.6)
-        // O modal sobe para a posição original (0)
-        await Task.WhenAll(
-            OverlayEscuro.FadeTo(0.6, 250, Easing.CubicOut),
-            ModalOpcoes.TranslateTo(0, 0, 300, Easing.CubicOut)
-        );
+        base.OnAppearing();
+        try
+        {
+            await CarregarPerfilAsync();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Perfil] OnAppearing erro: {ex.Message}");
+        }
     }
 
-    // Evento disparado ao clicar no botão "FECHAR" ou no fundo escuro
+    private async Task CarregarPerfilAsync()
+    {
+        var tarefaUsuario = _usuarioApiService.GetUsuarioLogadoAsync();
+        var tarefaCiclo   = _cicloApiService.GetConfigAsync(SessaoUsuario.UsuarioId ?? string.Empty);
+
+        await Task.WhenAll(tarefaUsuario, tarefaCiclo);
+
+        var usuario = tarefaUsuario.Result;
+        var ciclo   = tarefaCiclo.Result;
+
+        if (usuario is not null)
+        {
+            LabelNome.Text  = usuario.Nome;
+            LabelEmail.Text = usuario.Email;
+
+            LabelPeso.Text = usuario.Peso.HasValue
+                ? $"{usuario.Peso:0.#}kg" : "—";
+
+            var localizacao = string.Join(", ",
+                new[] { usuario.Cidade, usuario.Estado }
+                    .Where(s => !string.IsNullOrWhiteSpace(s)));
+            LabelLocalizacao.Text = string.IsNullOrEmpty(localizacao) ? "—" : localizacao;
+
+            LabelTipoSanguineo.Text = string.IsNullOrWhiteSpace(usuario.TipoSanguineo)
+                ? "— Tipo sanguíneo"
+                : $"{usuario.TipoSanguineo} · Tipo sanguíneo";
+
+            LabelFaseVida.Text = string.IsNullOrWhiteSpace(usuario.FaseVida)
+                ? "— Fase da vida" : usuario.FaseVida;
+
+            LabelAltura.Text = usuario.Altura.HasValue
+                ? $"{usuario.Altura:0.#} cm" : "—";
+        }
+        else
+        {
+            LabelNome.Text  = SessaoUsuario.Nome  ?? "—";
+            LabelEmail.Text = SessaoUsuario.Email ?? "—";
+        }
+
+        LabelCicloMedio.Text = ciclo is not null
+            ? $"{ciclo.DuracaoCiclo}d" : "28d";
+    }
+
+    // ── Modal ─────────────────────────────────────────────────────────
+
+    private async void OnSettingsClicked(object sender, EventArgs e)
+    {
+        try
+        {
+            OverlayEscuro.IsVisible = true;
+            ModalOpcoes.IsVisible   = true;
+            await Task.WhenAll(
+                OverlayEscuro.FadeToAsync(0.6, 250, Easing.CubicOut),
+                ModalOpcoes.TranslateToAsync(0, 0, 300, Easing.CubicOut));
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Perfil] OnSettingsClicked: {ex.Message}");
+        }
+    }
+
     private async void FecharModal_Clicked(object sender, EventArgs e)
     {
-        // 1. Executa as animações de saída ao mesmo tempo
-        // O fundo volta a ficar totalmente transparente (0)
-        // O modal desce 400 pixels, saindo da tela
-        await Task.WhenAll(
-            OverlayEscuro.FadeTo(0, 250, Easing.CubicIn),
-            ModalOpcoes.TranslateTo(0, 400, 300, Easing.CubicIn)
-        );
-
-        // 2. Esconde os elementos completamente só APÓS a animação terminar
-        OverlayEscuro.IsVisible = false;
-        ModalOpcoes.IsVisible = false;
+        try
+        {
+            await Task.WhenAll(
+                OverlayEscuro.FadeToAsync(0, 250, Easing.CubicIn),
+                ModalOpcoes.TranslateToAsync(0, 400, 300, Easing.CubicIn));
+            OverlayEscuro.IsVisible = false;
+            ModalOpcoes.IsVisible   = false;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Perfil] FecharModal: {ex.Message}");
+            OverlayEscuro.IsVisible = false;
+            ModalOpcoes.IsVisible   = false;
+        }
     }
 
     private async void SairDaConta_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//MainPage");
+        try
+        {
+            SessaoUsuario.Logout();
+            await Shell.Current.GoToAsync("//MainPage");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Perfil] SairDaConta: {ex.Message}");
+        }
     }
 
     private async void CriarConta_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CriarContaPage());
+        try
+        {
+            await Shell.Current.GoToAsync(nameof(CriarContaPage));
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Perfil] CriarConta: {ex.Message}");
+        }
     }
 
-    // ── Navbar ────────────────────────────────────────────────────
+    // ── Navbar ────────────────────────────────────────────────────────
 
     private async void OnHojeTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+    {
+        try { await Shell.Current.GoToAsync($"//{nameof(HomePage)}"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Perfil] Nav: {ex.Message}"); }
+    }
 
     private async void OnCicloTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(CicloPage));
+    {
+        try { await Shell.Current.GoToAsync(nameof(CicloPage)); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Perfil] Nav: {ex.Message}"); }
+    }
 
     private async void OnConteudosTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(EspacoSaber));
+    {
+        try { await Shell.Current.GoToAsync(nameof(EspacoSaber)); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Perfil] Nav: {ex.Message}"); }
+    }
 }
-

@@ -35,7 +35,14 @@ public partial class CicloPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await CarregarDadosDaApi();
+        try
+        {
+            await CarregarDadosDaApi();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[CicloPage] OnAppearing erro: {ex.Message}");
+        }
     }
 
     // ── Carregar dados da API ─────────────────────────────────────
@@ -144,26 +151,41 @@ public partial class CicloPage : ContentPage
         }
 
         var dataInicio = DatePickerInicio.Date ?? _hoje;
-        var dataFim = DatePickerFim.Date;
-
-        // Se fim == inicio, considera como período ainda em andamento (sem fim)
-        DateTime? fim = (dataFim.HasValue && dataFim.Value > dataInicio) ? dataFim.Value : null;
-
-        var request = new CreateCicloRegistroRequest
-        {
-            UsuarioId = usuarioId,
-            DataInicio = dataInicio,
-            DataFim = fim
-        };
+        var dataFim    = DatePickerFim.Date;
+        DateTime? fim  = (dataFim.HasValue && dataFim.Value > dataInicio) ? dataFim.Value : null;
 
         ModalOverlay.IsVisible = false;
 
         try
         {
+            // 1. Salva o registro do período (ciclo_registro)
+            var request = new CreateCicloRegistroRequest
+            {
+                UsuarioId  = usuarioId,
+                DataInicio = dataInicio,
+                DataFim    = fim
+            };
+
             var result = await _cicloApi.CreateCicloRegistroAsync(request);
+
             if (result is not null)
             {
-                // Recarrega tudo
+                // 2. Atualiza ciclo_config com a nova data_ultima_menstruacao (upsert)
+                //    Mantém os valores já existentes de duração; se não houver config usa defaults.
+                var configAtual = await _cicloApi.GetConfigAsync(usuarioId);
+
+                var cicloConfigRequest = new CreateCicloConfigRequest
+                {
+                    UsuarioId             = usuarioId,
+                    DataUltimaMenstruacao = dataInicio,          // data do novo período
+                    DuracaoCiclo          = configAtual?.DuracaoCiclo      ?? 28,
+                    DuracaoMenstruacao    = configAtual?.DuracaoMenstruacao ?? 5,
+                    CicloRegular          = configAtual?.CicloRegular      ?? true,
+                };
+
+                await _cicloApi.SaveConfigAsync(cicloConfigRequest);
+
+                // 3. Recarrega todos os dados da tela
                 await CarregarDadosDaApi();
             }
         }
@@ -370,11 +392,20 @@ public partial class CicloPage : ContentPage
     // ── Navbar ────────────────────────────────────────────────────
 
     private async void OnHojeTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+    {
+        try { await Shell.Current.GoToAsync($"//{nameof(HomePage)}"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Ciclo] Nav: {ex.Message}"); }
+    }
 
     private async void OnConteudosTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(EspacoSaber));
+    {
+        try { await Shell.Current.GoToAsync(nameof(EspacoSaber)); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Ciclo] Nav: {ex.Message}"); }
+    }
 
     private async void OnPerfilTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(Perfil));
+    {
+        try { await Shell.Current.GoToAsync("//Perfil"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Ciclo] Nav: {ex.Message}"); }
+    }
 }

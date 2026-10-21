@@ -17,30 +17,33 @@ public partial class EntrarPage : ContentPage
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
         {
-            await DisplayAlert("Erro", "Preencha e-mail e senha.", "OK");
+            await DisplayAlertAsync("Erro", "Preencha e-mail e senha.", "OK");
             return;
         }
 
         try
         {
-            // Tenta autenticar via API
             var resultado = await LoginViaApi(email, senha);
             if (resultado is not null)
             {
                 SessaoUsuario.UsuarioId = resultado.Id;
-                SessaoUsuario.Nome = resultado.Nome;
-                SessaoUsuario.Email = resultado.Email;
-                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                SessaoUsuario.Nome      = resultado.Nome;
+                SessaoUsuario.Email     = resultado.Email;
+                try { await Shell.Current.GoToAsync($"//{nameof(HomePage)}"); }
+                catch (Exception navEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[Login] Nav: {navEx.Message}");
+                }
             }
             else
             {
-                await DisplayAlert("Erro", "E-mail ou senha incorretos.", "Tentar novamente");
+                await DisplayAlertAsync("Erro", "E-mail ou senha incorretos.", "Tentar novamente");
             }
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"[Login] Erro: {ex.Message}");
-            await DisplayAlert("Erro", "Não foi possível conectar ao servidor. Verifique sua conexão.", "OK");
+            await DisplayAlertAsync("Erro", "Não foi possível conectar ao servidor.", "OK");
         }
     }
 

@@ -38,7 +38,7 @@ public partial class ArtigoDetalhePage : ContentPage
 
         if (artigo == null)
         {
-            await DisplayAlert("Erro", "Artigo não encontrado.", "OK");
+            await DisplayAlertAsync("Erro", "Artigo não encontrado.", "OK");
             await Shell.Current.GoToAsync("..");
             return;
         }
