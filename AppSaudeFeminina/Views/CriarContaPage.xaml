@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSaudeFeminina.CriarContaPage"
-             Title="Editar Perfil">
+             Title="Criar Conta">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="25">
@@ -14,54 +14,59 @@
                        FontSize="24" FontAttributes="Bold" TextColor="#C43A4A"
                        Margin="0,0,0,20"/>
 
+                <!-- NOME -->
                 <Label Text="NOME COMPLETO"
                        FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,0" />
                 <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                    <Entry x:Name="EntryNome" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                    <Entry x:Name="NomeEntry" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                            BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                 </Border>
 
+                <!-- EMAIL -->
                 <Label Text="E-MAIL PRINCIPAL"
                        FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,20,0,0" />
                 <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                    <Entry x:Name="EntryEmail" Keyboard="Email" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                    <Entry x:Name="EmailEntry" Keyboard="Email" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                            BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                 </Border>
 
-                <Label Text="TELEFONE"
+                <!-- SENHA -->
+                <Label Text="SENHA"
                        FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,20,0,0" />
                 <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                    <Entry x:Name="EntryTelefone" Keyboard="Telephone" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                    <Entry x:Name="SenhaEntry" IsPassword="True" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                            BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                 </Border>
 
             </VerticalStackLayout>
 
+            <!-- DATA NASCIMENTO + TELEFONE -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
                 <VerticalStackLayout Grid.Column="0">
                     <Label Text="DATA NASCIMENTO"
                            FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
                     <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                        <DatePicker x:Name="DatePickerNascimento" Format="dd/MM/yyyy" TextColor="#3A1A1A"
+                        <DatePicker x:Name="DataNascimentoPicker" Format="dd/MM/yyyy" TextColor="#3A1A1A"
                                     BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Column="1">
-                    <Label Text="CIDADE"
+                    <Label Text="TELEFONE"
                            FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
                     <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                        <Entry x:Name="EntryCidade" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                        <Entry x:Name="TelefoneEntry" Keyboard="Telephone" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                                BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
             </Grid>
 
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+            <!-- ALTURA + PESO -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,0,0,20">
                 <VerticalStackLayout Grid.Column="0">
                     <Label Text="ALTURA (CM)"
                            FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
                     <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                        <Entry x:Name="EntryAltura" Keyboard="Numeric" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                        <Entry x:Name="AlturaEntry" Keyboard="Numeric" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                                BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
@@ -69,92 +74,8 @@
                     <Label Text="PESO (KG)"
                            FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
                     <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                        <Entry x:Name="EntryPeso" Keyboard="Numeric" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                        <Entry x:Name="PesoEntry" Keyboard="Numeric" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                                BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
-                    </Border>
-                </VerticalStackLayout>
-            </Grid>
-
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
-                <VerticalStackLayout Grid.Column="0">
-                    <Label Text="TIPO SANGUÍNEO"
-                           FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
-                    <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White"
-                            StrokeShape="RoundRectangle 14" HeightRequest="55">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTipoSanguineoTapped" />
-                        </Border.GestureRecognizers>
-                        <Grid ColumnDefinitions="*, Auto" Padding="15,0">
-                            <Label x:Name="LblTipoSanguineo" Text="Selecionar"
-                                   VerticalOptions="Center" TextColor="#C43A4A" FontAttributes="Bold" />
-                            <Label Grid.Column="1" Text="▼" TextColor="#C43A4A" VerticalOptions="Center" />
-                        </Grid>
-                    </Border>
-                    <Border x:Name="BorderTipoSanguineo" IsVisible="False"
-                            StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White"
-                            Margin="0,2,0,0" StrokeShape="RoundRectangle 14" ZIndex="999">
-                        <CollectionView x:Name="CvTipoSanguineo" SelectionMode="Single"
-                                        SelectionChanged="OnTipoSanguineoSelected">
-                            <CollectionView.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>A+</x:String>
-                                    <x:String>A-</x:String>
-                                    <x:String>B+</x:String>
-                                    <x:String>B-</x:String>
-                                    <x:String>AB+</x:String>
-                                    <x:String>AB-</x:String>
-                                    <x:String>O+</x:String>
-                                    <x:String>O-</x:String>
-                                </x:Array>
-                            </CollectionView.ItemsSource>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Padding="15,10">
-                                        <Label Text="{Binding .}" TextColor="#C43A4A" FontSize="14" />
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Border>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="1">
-                    <Label Text="FASE DA VIDA"
-                           FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
-                    <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White"
-                            StrokeShape="RoundRectangle 14" HeightRequest="55">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnFaseVidaTapped" />
-                        </Border.GestureRecognizers>
-                        <Grid ColumnDefinitions="*, Auto" Padding="15,0">
-                            <Label x:Name="LblFaseVida" Text="Selecionar"
-                                   VerticalOptions="Center" TextColor="#C43A4A" FontAttributes="Bold" FontSize="12" />
-                            <Label Grid.Column="1" Text="▼" TextColor="#C43A4A" VerticalOptions="Center" />
-                        </Grid>
-                    </Border>
-                    <Border x:Name="BorderFaseVida" IsVisible="False"
-                            StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White"
-                            Margin="0,2,0,0" StrokeShape="RoundRectangle 14" ZIndex="999">
-                        <CollectionView x:Name="CvFaseVida" SelectionMode="Single"
-                                        SelectionChanged="OnFaseVidaSelected">
-                            <CollectionView.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Adolescência</x:String>
-                                    <x:String>Fase Adulta</x:String>
-                                    <x:String>Tentante</x:String>
-                                    <x:String>Gestação e Pós-parto</x:String>
-                                    <x:String>Climatério</x:String>
-                                    <x:String>Senescência</x:String>
-                                </x:Array>
-                            </CollectionView.ItemsSource>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Padding="15,10">
-                                        <Label Text="{Binding .}" TextColor="#C43A4A" FontSize="12" />
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
                     </Border>
                 </VerticalStackLayout>
             </Grid>
@@ -163,12 +84,14 @@
             <Label Text="Saúde Menstrual"
                    FontSize="24" FontAttributes="Bold" TextColor="#C43A4A" />
 
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+            <!-- DURAÇÃO CICLO + DURAÇÃO FLUXO -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,0,0,20">
                 <VerticalStackLayout Grid.Column="0">
                     <Label Text="DURAÇÃO DO CICLO (DIAS)"
                            FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
                     <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                        <Entry x:Name="EntryDuracaoCiclo" Keyboard="Numeric" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                        <Entry x:Name="DuracaoCicloEntry" Keyboard="Numeric" Placeholder="28"
+                               PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                                BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
@@ -176,23 +99,25 @@
                     <Label Text="DURAÇÃO DO FLUXO (DIAS)"
                            FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,5" />
                     <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                        <Entry x:Name="EntryDuracaoFluxo" Keyboard="Numeric" PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
+                        <Entry x:Name="DuracaoFluxoEntry" Keyboard="Numeric" Placeholder="5"
+                               PlaceholderColor="#B0B0B0" TextColor="#3A1A1A"
                                BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                     </Border>
                 </VerticalStackLayout>
             </Grid>
 
+            <!-- ÚLTIMA MENSTRUAÇÃO -->
             <VerticalStackLayout Spacing="6">
                 <Label Text="ÚLTIMA MENSTRUAÇÃO"
                        FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,0" />
                 <Border StrokeThickness="1" Stroke="#FBD9E5" BackgroundColor="White" StrokeShape="RoundRectangle 14">
-                    <DatePicker x:Name="DatePickerUltimaMenstruacao" Format="dd/MM/yyyy" TextColor="#3A1A1A"
+                    <DatePicker x:Name="UltimaMenstruacaoPicker" Format="dd/MM/yyyy" TextColor="#3A1A1A"
                                 BackgroundColor="Transparent" Margin="15,0" HeightRequest="55" />
                 </Border>
             </VerticalStackLayout>
 
             <!-- CICLO REGULAR? -->
-            <VerticalStackLayout Spacing="5" Margin="0,0,0,10">
+            <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
                 <Label Text="CICLO REGULAR?"
                        FontSize="12" FontAttributes="Bold" TextColor="#C56682" Margin="4,0,0,0" />
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
@@ -208,7 +133,7 @@
             </VerticalStackLayout>
 
             <!-- ── Contracepção ───────────────────────────────────────── -->
-            <VerticalStackLayout Spacing="5" Margin="0,10,0,10">
+            <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
 
                 <Label Text="Contracepção"
                        FontSize="24" FontAttributes="Bold" TextColor="#C43A4A" Margin="0,0,0,15"/>
@@ -297,8 +222,8 @@
                 </HorizontalStackLayout>
             </Border>
 
-            <!-- Botão Salvar -->
-            <Border x:Name="BtnConcluir" HeightRequest="60" HorizontalOptions="FillAndExpand"
+            <!-- Botão Concluir -->
+            <Border HeightRequest="60" HorizontalOptions="FillAndExpand"
                     Margin="0,20" StrokeThickness="0" StrokeShape="RoundRectangle 30">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -309,7 +234,7 @@
                 <Border.Shadow>
                     <Shadow Brush="Black" Offset="0,5" Radius="10" Opacity="0.2" />
                 </Border.Shadow>
-                <Label Text="CONCLUIR ALTERAÇÕES" TextColor="White" FontAttributes="Bold" FontSize="14"
+                <Label Text="CONCLUIR CADASTRO" TextColor="White" FontAttributes="Bold" FontSize="14"
                        CharacterSpacing="1" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnConcluirClicked" />

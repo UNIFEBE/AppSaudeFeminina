@@ -17,7 +17,7 @@ public partial class EntrarPage : ContentPage
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
         {
-            await DisplayAlertAsync("Erro", "Preencha e-mail e senha.", "OK");
+            await DisplayAlert("Erro", "Preencha e-mail e senha.", "OK");
             return;
         }
 
@@ -37,13 +37,13 @@ public partial class EntrarPage : ContentPage
             }
             else
             {
-                await DisplayAlertAsync("Erro", "E-mail ou senha incorretos.", "Tentar novamente");
+                await DisplayAlert("Erro", "E-mail ou senha incorretos.", "Tentar novamente");
             }
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"[Login] Erro: {ex.Message}");
-            await DisplayAlertAsync("Erro", "Não foi possível conectar ao servidor.", "OK");
+            await DisplayAlert("Erro", "Não foi possível conectar ao servidor.", "OK");
         }
     }
 
@@ -55,28 +55,24 @@ public partial class EntrarPage : ContentPage
         };
         using var client = new HttpClient(handler);
 
-        string baseUrl;
-        if (DeviceInfo.Platform == DevicePlatform.Android)
-            baseUrl = "http://10.0.2.2:5026/api/auth/login";
-        else
-            baseUrl = "https://localhost:7252/api/auth/login";
+        string baseUrl = DeviceInfo.Platform == DevicePlatform.Android
+            ? "http://10.0.2.2:5026/api/auth/login"
+            : "https://localhost:7252/api/auth/login";
 
         var payload = new { Email = email, Senha = senha };
         var response = await client.PostAsJsonAsync(baseUrl, payload);
 
         if (response.IsSuccessStatusCode)
-        {
             return await response.Content.ReadFromJsonAsync<LoginResponse>(
                 new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
 
         return null;
     }
 
     private class LoginResponse
     {
-        public string Id { get; set; } = string.Empty;
-        public string Nome { get; set; } = string.Empty;
+        public string Id    { get; set; } = string.Empty;
+        public string Nome  { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string? Message { get; set; }
     }

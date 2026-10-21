@@ -5,6 +5,9 @@ using Microsoft.Maui.Controls.Shapes;
 
 namespace AppSaudeFeminina;
 
+using AppSaudeFeminina.Services;
+using CommunityToolkit.Maui.Core;
+
 public partial class HomePage : ContentPage
 {
     private string _especialidadeSelecionada = "Ginecologia";
@@ -296,7 +299,7 @@ public partial class HomePage : ContentPage
             if (data.Date <= DateTime.Today)
             {
                 ModalConsulta.IsVisible = false;
-                await DisplayAlertAsync("Data inválida",
+                await DisplayAlert("Data inválida",
                     "O agendamento deve ser feito com pelo menos um dia de antecedência. Escolha uma data a partir de amanhã.",
                     "OK");
                 return;
@@ -316,18 +319,18 @@ public partial class HomePage : ContentPage
             if (criada is not null)
             {
                 await CarregarConsultasAsync();
-                await DisplayAlertAsync("Agendado",
+                await DisplayAlert("Agendado",
                     $"{_especialidadeSelecionada} confirmado para {data:dd/MM/yyyy}.", "OK");
             }
             else
             {
-                await DisplayAlertAsync("Erro", "Não foi possível agendar a consulta.", "OK");
+                await DisplayAlert("Erro", "Não foi possível agendar a consulta.", "OK");
             }
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"[Home] Agendamento: {ex.Message}");
-            await DisplayAlertAsync("Erro", "Não foi possível conectar ao servidor.", "OK");
+            await DisplayAlert("Erro", "Não foi possível conectar ao servidor.", "OK");
         }
     }
 
