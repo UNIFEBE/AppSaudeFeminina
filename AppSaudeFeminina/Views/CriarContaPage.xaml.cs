@@ -213,6 +213,20 @@ public partial class CriarContaPage : ContentPage
             SessaoUsuario.Nome      = criado.Nome;
             SessaoUsuario.Email     = criado.Email;
 
+            // Salva dados de saúde (tipo sanguíneo e fase da vida)
+            if (_tipoSanguineo is not null || _faseVida is not null || altura is not null || peso is not null)
+            {
+                var saudePayload = new
+                {
+                    Peso          = peso,
+                    Altura        = altura,
+                    TipoSanguineo = _tipoSanguineo,
+                    FaseVida      = _faseVida,
+                };
+                await _httpClient.PutAsJsonAsync(
+                    $"{_usuariosBaseUrl}/{criado.Id}/dados-saude", saudePayload, _jsonOptions);
+            }
+
             // Salva ciclo config
             var cicloPayload = new
             {
