@@ -121,7 +121,10 @@ public partial class Perfil : ContentPage
     {
         try
         {
-            await Shell.Current.GoToAsync(nameof(CriarContaPage));
+            // Instancia com modoEdicao=true e usa navegação modal para evitar
+            // conflito com a rota Shell do CriarContaPage
+            var pagina = new CriarContaPage(modoEdicao: true);
+            await Navigation.PushAsync(pagina);
         }
         catch (Exception ex)
         {

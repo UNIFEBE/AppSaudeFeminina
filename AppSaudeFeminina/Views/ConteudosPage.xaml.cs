@@ -9,16 +9,19 @@ public partial class ConteudosPage : ContentPage
 
     private async void OnHojeTapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+        try { await Shell.Current.GoToAsync($"//{nameof(HomePage)}"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Conteudos] Nav: {ex.Message}"); }
     }
 
     private async void OnCicloTapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(CicloPage));
+        try { await Shell.Current.GoToAsync(nameof(CicloPage)); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Conteudos] Nav: {ex.Message}"); }
     }
 
     private async void OnPerfilTapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(PerfilPage));
+        try { await Shell.Current.GoToAsync("//Perfil"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Conteudos] Nav: {ex.Message}"); }
     }
 }

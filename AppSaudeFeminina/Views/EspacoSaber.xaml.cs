@@ -151,11 +151,20 @@ public partial class EspacoSaber : ContentPage
     // ── Navbar ────────────────────────────────────────────────
 
     private async void OnHojeTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+    {
+        try { await Shell.Current.GoToAsync($"//{nameof(HomePage)}"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[EspacoSaber] Nav: {ex.Message}"); }
+    }
 
     private async void OnCicloTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(CicloPage));
+    {
+        try { await Shell.Current.GoToAsync(nameof(CicloPage)); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[EspacoSaber] Nav: {ex.Message}"); }
+    }
 
     private async void OnPerfilTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(Perfil));
+    {
+        try { await Shell.Current.GoToAsync("//Perfil"); }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[EspacoSaber] Nav: {ex.Message}"); }
+    }
 }

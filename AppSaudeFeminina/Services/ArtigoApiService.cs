@@ -34,8 +34,11 @@ namespace AppSaudeFeminina.Services
 
                 var artigos = await _httpClient.GetFromJsonAsync<List<ArtigoModel>>(url);
 
-                System.Diagnostics.Debug.WriteLine($"[ArtigoApi] Retornou {artigos?.Count ?? 0} artigos");
-                return artigos ?? new List<ArtigoModel>();
+                // Exibe apenas artigos publicados/ativos
+                var publicados = artigos?.Where(a => a.Publicado).ToList() ?? new List<ArtigoModel>();
+
+                System.Diagnostics.Debug.WriteLine($"[ArtigoApi] Retornou {artigos?.Count ?? 0} artigos, {publicados.Count} publicados");
+                return publicados;
             }
             catch (Exception ex)
             {
@@ -49,7 +52,16 @@ namespace AppSaudeFeminina.Services
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<ArtigoModel>($"{_baseUrl}/{id}");
+                var artigo = await _httpClient.GetFromJsonAsync<ArtigoModel>($"{_baseUrl}/{id}");
+
+                // Retorna null se o artigo estiver inativo
+                if (artigo != null && !artigo.Publicado)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[ArtigoApi] Artigo {id} está inativo, bloqueado.");
+                    return null;
+                }
+
+                return artigo;
             }
             catch (Exception ex)
             {
